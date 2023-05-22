@@ -10,12 +10,14 @@
 #### Workspace setup ####
 library(opendatatoronto)
 library(tidyverse)
-# [...UPDATE THIS...]
+library(dplyr)
 
-#### Download data ####
-# [...ADD CODE HERE TO DOWNLOAD...]
+#### Download data and write municipal election polling location data ####
 
-
+# download data
+raw_location_data = download_data_from_opendatatoronto
+package_id = "31dac8b2-2e15-4945-abef-ce98d248bb8e"
+resource_id = "31dac8b2-2e15-4945-abef-ce98d248bb8e"
 
 #### Save data ####
 # [...UPDATE THIS...]
