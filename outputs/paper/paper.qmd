@@ -1,16 +1,13 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
-author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+title: "Do More Polling Locations in Wards Increase Turnout? An Analysis of the 2022 Toronto Municipal Election"
+author: "Inessa De Angelis"
+thanks: "Code and data from this analysis are available at: https://github.com/InessaDeAngelis/Toronto_Elections."
 date: "`r Sys.time()`"
-date-format: "D MMMM YYYY"
+date-format: "22 05 2023"
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 format: pdf
 number-sections: true
-bibliography: references.bib
+bibliography: ref.bib
 ---
 
 ```{r}
