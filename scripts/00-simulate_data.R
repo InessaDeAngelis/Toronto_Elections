@@ -1,11 +1,12 @@
 #### Preamble ####
-# Purpose: Simulates... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Download the 2022 Toronto Municipal Election results data set 
+# Author: Inessa De Angelis
+# Date: 22 May 2023 
+# Contact: inessa.deangelis@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ 
+# Note: Only download 2022 election data from the City of Toronto's website
 
 
 #### Workspace setup ####
