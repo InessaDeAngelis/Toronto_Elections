@@ -4,7 +4,7 @@
 # Date: 22 May 2023 
 # Contact: inessa.deangelis@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
+# Pre-requisites: none
 # Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ 
 # Note: Only download 2022 election data from the City of Toronto's website
 
