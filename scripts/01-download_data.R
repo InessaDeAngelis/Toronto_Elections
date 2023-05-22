@@ -19,9 +19,11 @@ raw_location_data = download_data_from_opendatatoronto
 package_id = "31dac8b2-2e15-4945-abef-ce98d248bb8e"
 resource_id = "31dac8b2-2e15-4945-abef-ce98d248bb8e"
 
-#### Save data ####
-# [...UPDATE THIS...]
-# change the_raw_data to whatever name you assigned when you downloaded it.
-write_csv(the_raw_data, "inputs/data/raw_data.csv") 
+# write data
+write.csv (
+  x = raw_location_data,
+  file = "inputs/data/raw_location_data.csv"
+)
+
 
          
