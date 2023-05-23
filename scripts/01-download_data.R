@@ -34,20 +34,7 @@ raw_voter_statistics = download_data_from_opendatatoronto (
 )
 
 # write data
-write.csv (
+write.csv(
   x = raw_voter_statistics,
   file = "inputs/data/raw_voter_statistics.csv"
-)
-
-#### Download data and write municipal election poll by poll data ####
-
-# download data
-Raw_Poll_By_Poll_All_Offices = download_data_from_opendatatoronto (
-  package_id = "96d35404-44d9-49d8-95bb-fb1e5489240d",
-)
-
-# write data
-write.xlxs (
-  x = Raw_Poll_By_Poll_All_Offices,
-  file = "inputs/data/_Poll_By_Poll_All_Offices.xlsx"        
 )
