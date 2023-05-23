@@ -3,7 +3,7 @@ title: "Do More Polling Locations in Wards Increase Turnout? An Analysis of the 
 author: "Inessa De Angelis"
 thanks: "Code and data from this analysis are available at: https://github.com/InessaDeAngelis/Toronto_Elections."
 date: "`r Sys.time()`"
-date-format: "22 05 2023"
+date-format: "25 05 2023"
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 format: pdf
 number-sections: true
