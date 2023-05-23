@@ -1,13 +1,14 @@
 #### Preamble ####
 # Purpose: Cleans the raw municipal election data by...
 # Author: Inessa De Angelis
-# Date: 22 May 2023
+# Date: 25 May 2023
 # Contact: inessa.deangelis@mail.utoronto.ca 
 # License: MIT
 # Pre-requisites: none
 
 #### Workspace setup ####
 library(tidyverse)
+library(janitor)
 
 #### Clean data ####
 raw_data <- read_csv("inputs/data/plane_data.csv")
