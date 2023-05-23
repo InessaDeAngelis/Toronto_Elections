@@ -1,19 +1,19 @@
 #### Preamble ####
-# Purpose: Download the 2022 Toronto Municipal Election results data set 
+# Purpose: Simulate the 2022 Toronto Municipal Election ward locations and results data sets 
 # Author: Inessa De Angelis
-# Date: 22 May 2023 
+# Date: 25 May 2023 
 # Contact: inessa.deangelis@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: none
-# Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ 
-# Note: Only download 2022 election data from the City of Toronto's website
-
+# Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ & https://open.toronto.ca/dataset/election-results-official/ & https://open.toronto.ca/dataset/elections-voter-statistics/
+# Note: For each webpage, only download the 2022 election data 
 
 #### Workspace setup ####
 library(tidyverse)
 
 #### Simulate data ####
-# [...ADD CODE HERE...]
+
+## Assumptions
 
 
 
