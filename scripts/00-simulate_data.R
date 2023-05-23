@@ -11,6 +11,8 @@
 #### Workspace setup ####
 library(tidyverse)
 
+#### Data expectations ####
+
 #### Simulate data ####
 
 ## Assumptions
