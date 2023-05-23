@@ -7,7 +7,7 @@ This paper analyzes data from the 2022 Toronto Municipal Election to unveil whic
 
 The repo is structured as the following:
 
--   `input/data` contains the data sources used in analysis including raw and cleaned data.
+-   `input/data` contains the literature and data sources used in analysis including raw and cleaned data.
 
 -   `outputs/paper` contains the files used to generate the paper, including the Quarto document and bibliography file, as well as the PDF of the paper.
 
