@@ -4,7 +4,7 @@
 # Date: 25 May 2023
 # Contact: inessa.deangelis@mail.utoronto.ca 
 # License: MIT
-# Pre-requisites: none
+# Pre-requisites: 01-download_data.R
 
 #### Workspace setup ####
 library(tidyverse)
