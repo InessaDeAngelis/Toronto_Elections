@@ -36,8 +36,8 @@ polling_locations_per_ward =
   count() |>
   rename("num_locations" = "n")
 
-# add voter turnout column to the data
-locations_per_ward['turnout'] = sim_turnout
+# add point name column to the data
+locations_per_ward['turnout'] = sim_point_turnout
 
 # compute bps per ward
 locations_per_ward =
@@ -46,3 +46,4 @@ locations_per_ward =
     bps_of_ward =
       num_locations / population * 10000
   )
+
