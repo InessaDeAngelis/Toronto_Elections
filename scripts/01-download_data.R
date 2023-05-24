@@ -26,15 +26,15 @@ write.csv (
   file = "inputs/data/raw_voting_locations.csv"
 )
 
-#### Download data and write municipal election voter statistics data ####
+#### Download data and write voter statistics data ####
 
 # download data
 raw_voter_statistics = download_data_from_opendatatoronto (
-  package_id = "7dc606ab-f042-4d90-99e2-9247cb5953d2",
+  package_id = "7dc606ab-f042-4d90-99e2-9247cb5953d2"
 )
 
 # write data
-write.csv(
+write.csv (
   x = raw_voter_statistics,
   file = "inputs/data/raw_voter_statistics.csv"
 )
