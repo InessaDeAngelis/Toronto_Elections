@@ -14,13 +14,14 @@ library(tidyverse)
 #### Data expectations ####
 # There are a similar or identical number of polling locations per ward
 # The polling locations in each ward in equally spaced out within the ward boundaries
-# columns: point_name, point_short_code, voter_count
+# columns: _id, point_name, point_short_code, voter_count
 
 #### Simulate data ####
 
 ## Assumptions
 
 # Fictional point name, point short code, and voter count
+sim_id = c("1", "2", "3", "4",)
 sim_point_name = c("Catholic_Church", "High_School", "Apartments", "Nursing_Home")
 sim_point_short_code = c(042, 025, 033, 060)
 sim_voter_count = c("1000", "1700", "500", "2100")
@@ -30,7 +31,7 @@ sim_voter_count = c("1000", "1700", "500", "2100")
 
 # summarize polling locations by ward
 polling_locations_per_ward = 
-  "simulated_data" |>
+  simulated_data |>
   group_by(ward) |>
   count() |>
   rename("num_locations" = "n")
