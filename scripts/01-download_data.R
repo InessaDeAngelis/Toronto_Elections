@@ -35,6 +35,6 @@ raw_voter_statistics = download_data_from_opendatatoronto (
 
 # write data
 write.csv (
-  x = raw_voter_statistics,
+  x = "raw_voter_statistics",
   file = "inputs/data/raw_voter_statistics.csv"
 )
