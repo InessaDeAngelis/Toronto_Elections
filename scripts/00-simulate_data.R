@@ -5,7 +5,7 @@
 # Contact: inessa.deangelis@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: none
-# Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ & https://open.toronto.ca/dataset/election-results-official/ & https://open.toronto.ca/dataset/elections-voter-statistics/
+# Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ & https://open.toronto.ca/dataset/elections-voter-statistics/
 # Note: For each webpage, only download the 2022 election data 
 
 #### Workspace setup ####
@@ -14,23 +14,23 @@ library(tidyverse)
 #### Data expectations ####
 # There are a similar or identical number of polling locations per ward
 # The polling locations in each ward in equally spaced out within the ward boundaries
-# columns: ward, building_name, building_address, %_voted
+# columns: point_name, point_short_code, voter_count
 
 #### Simulate data ####
 
 ## Assumptions
 
-# Fictional ward, voting locations, and voter turnout
-sim_ward = c("Ward1", "Ward2", "Ward3", "Ward44")
-sim_locations = c(55, 52, 57, 56)
-sim_turnout = c("22%", "27%", "32%", "38%")
+# Fictional point name, point short code, and voter count
+sim_point_name = c("Catholic_Church", "High_School", "Apartments", "Nursing_Home")
+sim_point_short_code = c(042, 025, 033, 060)
+sim_voter_count = c("1000", "1700", "500", "2100")
 
 ## Create summary statistics of number of polling locations per ward and 
 ## compare it with the voter turnout by ward
 
 # summarize polling locations by ward
 polling_locations_per_ward = 
-  simulated_data |>
+  "simulated_data" |>
   group_by(ward) |>
   count() |>
   rename("num_locations" = "n")
