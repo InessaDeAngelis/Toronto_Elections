@@ -21,7 +21,7 @@ library(tidyverse)
 ## Assumptions
 
 # Fictional point name, point short code, and voter count
-sim_id = c("1", "2", "3", "4",)
+sim_id = c("1", "2", "3", "4")
 sim_point_name = c("Catholic_Church", "High_School", "Apartments", "Nursing_Home")
 sim_point_short_code = c(042, 025, 033, 060)
 sim_voter_count = c("1000", "1700", "500", "2100")
