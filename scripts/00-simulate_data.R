@@ -5,8 +5,8 @@
 # Contact: inessa.deangelis@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: none
-# Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ & https://open.toronto.ca/dataset/elections-voter-statistics/
-# Note: For each webpage, only download the 2022 election data 
+# Data sets: https://open.toronto.ca/dataset/elections-voting-locations/ 
+# Note: Only download the 2022 election data from the webpage
 
 #### Workspace setup ####
 library(tidyverse)
