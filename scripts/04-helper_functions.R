@@ -10,10 +10,9 @@
 library(opendatatoronto)
 
 ## Download data from opendatatoronto
-download_data_from_opendatatoronto = function(package_id, resource_id) {
+download_data_from_opendatatoronto = function(package_id) {
   
   raw_data = 
     list_package_resources(package_id) |> # get resources for the package_id
-    filter (id == resource_id) |> # filter by resource_id
     get_resource() #download data
 }
