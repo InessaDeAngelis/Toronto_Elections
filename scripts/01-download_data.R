@@ -11,7 +11,6 @@ library(opendatatoronto)
 library(tidyverse)
 library(dplyr)
 library(readr)
-source("scripts/04-helper_functions.R")
 
 #### Download data and write municipal election polling location data ####
 
