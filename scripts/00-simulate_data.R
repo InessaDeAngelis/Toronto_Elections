@@ -20,4 +20,8 @@ library(tidyverse)
 
 #### Simulate data ####
 
+simulated_data <-
+  tibble(
+  #use 1 through 25 to represent each ward
+  )
 
