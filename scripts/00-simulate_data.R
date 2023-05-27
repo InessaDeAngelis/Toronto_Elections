@@ -17,8 +17,9 @@ library(tidyverse)
 library(janitor)
 
 #### Data expectations ####
-# There are a similar or identical number of subdivisions per ward
-# columns: ward, sub
+# There are a similar number of subdivisions per ward
+# Voter turnout varies by ward
+# Wards with more subdivisions will have a higher turnout
 
 #### Simulate voter turnout by ward ####
 #based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html#simulate
