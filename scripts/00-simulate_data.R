@@ -46,7 +46,7 @@ simulate_data <-
    #use 1 through 25 to represent each ward
     "ward" = 1:25,
     #randomly pick an option, between 50 and 75, without replacement, 25 times
-    x <- sample(50:75, 25, replace=F),
+    "number_subdivision" = x <- sample(50:75, 25, replace=F),
     )
 
 simulate_data
