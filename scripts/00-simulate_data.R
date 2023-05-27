@@ -45,10 +45,13 @@ simulate_data <-
   tibble(
     #use 1 through 25 to represent each ward
     "ward" = 1:25,
-    #randomly pick an option, between 38 and 99, 25 times
-    "number_subdivisions" = sample(
+    #randomly pick an option, between 50 and 75, without replacement, 25 times
+    x <- sample(50:75, 25, replace=F),
+     "number_subdivisions" = sample(
       x = c("53", "83", "71", "57", "97"),
       size = 25,
-      replace = TRUE
+      replace = FALSE
     )
   )
+
+simulated_data
