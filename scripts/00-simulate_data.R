@@ -59,13 +59,10 @@ simulate_data <-
   tibble(
     #use 1 through 25 to represent each ward
     "ward" = 1:25,
-    #randomly pick an option, with replacement, 25 times
-    "turnout" = sample(
-      x = c("25%", "22%", "30%", "34%", "38%"),
-      size = 25,
-      replace = TRUE,
+    #randomly pick an option, without replacement, 25 times
+    "turnout" = x <- sample(19:44, 25, replace=F),
       #randomly pick an option, between 50 and 75, without replacement, 25 times
       "number_subdivision" = x <- sample(50:75, 25, replace=F),
     )
-  )
+
 simulate_data
