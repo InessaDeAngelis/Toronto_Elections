@@ -68,7 +68,7 @@ simulate_data <-
 
 simulate_data
 
-#### Graph the simulation comparing the voter turnout to number of subdivisions per ward ####
+#### Graph voter turnout per ward ####
 #Code referenced from: https://r-graph-gallery.com/218-basic-barplots-with-ggplot2.html
 
 set.seed(300)
@@ -81,4 +81,19 @@ data <- data.frame(
 
 # Barplot
 ggplot(data, aes(x=ward, y=turnout)) + 
-  geom_bar(stat = "identity")
+  geom_bar(stat = "identity") 
+
+#### Graph number of subdivisions per ward ####
+#Code referenced from: https://r-graph-gallery.com/218-basic-barplots-with-ggplot2.html
+
+set.seed(300)
+
+# Create data
+data <- data.frame(
+  ward=c("1","2","3","4","5") ,  
+  subdivisions=c(53,57,65,71,75)
+)
+
+# Barplot
+ggplot(data, aes(x=ward, y=subdivisions)) + 
+  geom_bar(stat = "identity") 
