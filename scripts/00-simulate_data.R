@@ -38,3 +38,17 @@ simulated_data <-
 simulated_data
 
 #### Simulate number of subdivisions by ward ####
+
+set.seed(300)
+
+simulate_data <-
+  tibble(
+    #use 1 through 25 to represent each ward
+    "ward" = 1:25,
+    #randomly pick an option, between 38 and 99, 25 times
+    "number_subdivisions" = sample(
+      x = c("53", "83", "71", "57", "97"),
+      size = 25,
+      replace = TRUE
+    )
+  )
