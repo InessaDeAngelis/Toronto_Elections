@@ -11,7 +11,11 @@ library(tidyverse)
 library(janitor)
 
 #### Clean data ####
-raw_data <- read_csv("inputs/data/plane_data.csv")
+# Read in the raw voter statistics data. 
+readr::read_csv("inputs/data/raw_voter_statistics.csv")
+
+# Read in the raw voting locations data. 
+readr::read_csv("inputs/data/raw_voting_locations.csv")
 
 cleaned_data <-
   raw_data |>
