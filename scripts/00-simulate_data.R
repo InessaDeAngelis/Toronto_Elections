@@ -67,3 +67,14 @@ simulate_data <-
     )
 
 simulate_data
+
+#### Graph the simulation comparing the voter turnout to number of subdivisions per ward ####
+
+set.seed(300)
+
+simulate_data |> 
+  ggplot(aes(fill = type, x = ward)) +
+  geom_bar(position = "dodge")
+  
+  
+  
