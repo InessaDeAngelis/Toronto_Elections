@@ -73,8 +73,6 @@ simulate_data
 set.seed(300)
 
 simulate_data |> 
-  ggplot(aes(fill = type, x = ward)) +
+  ggplot(aes(fill = ward, x = turnout)) +
   geom_bar(position = "dodge")
-  
-  
   
