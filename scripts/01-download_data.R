@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from OpenDataToronto portal
+# Purpose: Downloads, saves, and reads data from the OpenDataToronto portal
 # Author: Inessa De Angelis
 # Date: 28 May 2023
 # Contact: inessa.deangelis@mail.utoronto.ca
@@ -13,6 +13,9 @@ library(dplyr)
 library(readr)
 
 #### Download data and write municipal election data ####
+
+
+#### Read municipal election data ####
 
 # Read in the raw voter statistics data. 
 readr::read_csv("inputs/data/raw_voter_statistics.csv")
