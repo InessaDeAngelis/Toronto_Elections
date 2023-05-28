@@ -112,3 +112,8 @@ data <- data.frame(
 # Barplot
 ggplot(data, aes(x=turnout, y=subdivisions)) + 
   geom_bar(stat = "identity") 
+
+#### Test simulated data ####
+
+# Expectations #
+# There is no fewer than 1 ward and no more than 25 wards #
