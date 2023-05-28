@@ -24,7 +24,7 @@ list_package_resources("https://open.toronto.ca/dataset/elections-voting-locatio
 
 list_package_resources("7dc606ab-f042-4d90-99e2-9247cb5953d2") %>%
   head(1) %>%
-get_resource()
+  get_resource()
 
 #### Read municipal election data ####
 
