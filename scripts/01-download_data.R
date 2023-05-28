@@ -20,9 +20,11 @@ list_package_resources("https://open.toronto.ca/dataset/elections-voting-locatio
   get_resource()
 
 #### Download voter statistics data ####
-# Code referenced from: https://cran.r-project.org/web/packages/opendatatoronto/opendatatoronto.pdf 
+# Code referenced from: https://cran.r-project.org/web/packages/opendatatoronto/opendatatoronto.pdf
+# & https://github.com/sharlagelfand/opendatatoronto/blob/main/vignettes/articles/multiple_resources_purrr.Rmd
 
 list_package_resources("7dc606ab-f042-4d90-99e2-9247cb5953d2") %>%
+  filter(grepl("2022", name)) %>%
   head(1) %>%
   get_resource()
 
