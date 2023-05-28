@@ -13,7 +13,11 @@ library(dplyr)
 library(readr)
 
 #### Download data and write municipal election data ####
+# Code referenced from: https://cran.r-project.org/web/packages/opendatatoronto/opendatatoronto.pdf 
 
+list_package_resources("https://open.toronto.ca/dataset/elections-voting-locations/") %>%
+  head(1) %>%
+  get_resource()
 
 #### Read municipal election data ####
 
