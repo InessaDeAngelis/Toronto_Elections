@@ -12,12 +12,19 @@ library(tidyverse)
 library(dplyr)
 library(readr)
 
-#### Download data and write municipal election data ####
+#### Download voting locations data ####
 # Code referenced from: https://cran.r-project.org/web/packages/opendatatoronto/opendatatoronto.pdf 
 
 list_package_resources("https://open.toronto.ca/dataset/elections-voting-locations/") %>%
   head(1) %>%
   get_resource()
+
+#### Download voter statistics data ####
+# Code referenced from: https://cran.r-project.org/web/packages/opendatatoronto/opendatatoronto.pdf 
+
+list_package_resources("7dc606ab-f042-4d90-99e2-9247cb5953d2") %>%
+  head(1) %>%
+get_resource()
 
 #### Read municipal election data ####
 
