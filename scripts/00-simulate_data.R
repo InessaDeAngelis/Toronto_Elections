@@ -112,3 +112,4 @@ data <- data.frame(
 # Barplot
 ggplot(data, aes(x=turnout, y=subdivisions)) + 
   geom_bar(stat = "identity") 
+
