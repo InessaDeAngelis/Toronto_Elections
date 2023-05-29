@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Simulate the 2022 Toronto Municipal Election ward locations and results data sets 
+# Purpose: Simulate the 2022 Toronto Municipal Election voter statistics and voting locations data sets 
 # Author: Inessa De Angelis
 # Date: 28 May 2023 
 # Contact: inessa.deangelis@mail.utoronto.ca
