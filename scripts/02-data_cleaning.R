@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Cleans the raw municipal election data by...
+# Purpose: Cleans the raw voter statistics and voting locations data by simplifying names and selecting the relevant columns from each data set
 # Author: Inessa De Angelis
 # Date: 25 May 2023
 # Contact: inessa.deangelis@mail.utoronto.ca 
