@@ -32,11 +32,22 @@ cleaned_voter_statistics <-
 
 head(cleaned_voter_statistics)
 
+# Rename % voted column #
+cleaned_voter_statistics <-
+  cleaned_voter_statistics |>
+  rename(
+    %_voted = percentage_voted,
+  )
+
+head(cleaned_voter_statistics)
+
 # select columns of interest #
 cleaned_voter_statistics <-
+  cleaned_voter_statistics |>
   select(
     ward,
     sub,
     total_eligible_electors,
     number_voted,
   )
+head(cleaned_voter_statistics)
