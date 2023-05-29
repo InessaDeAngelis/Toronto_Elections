@@ -11,6 +11,8 @@
 # Note: Only download the 2022 election data from the webpages
 
 #### Workspace setup ####
+# install.packages("tidyverse")
+# install.packages("janitor")
 library(tidyverse)
 library(janitor)
 
@@ -115,3 +117,7 @@ ggplot(data, aes(x=turnout, y=subdivisions)) +
 
 # Expectations #
 # There is no fewer than 1 ward and no more than 25 wards #
+simulate_data |>
+  runif(n = ward, min = 1, max = 25)
+  
+  
