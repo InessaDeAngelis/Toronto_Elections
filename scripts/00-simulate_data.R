@@ -11,8 +11,6 @@
 # Note: Only download the 2022 election data from the webpages
 
 #### Workspace setup ####
-# install.packages("tidyverse")
-# install.packages("janitor")
 library(tidyverse)
 library(janitor)
 
