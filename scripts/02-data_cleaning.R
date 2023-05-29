@@ -26,7 +26,7 @@ raw_voter_statistics <-
     show_col_types = FALSE
   )
 
-# Name organization#
+# Name organization #
 cleaned_voter_statistics <-
   clean_names(raw_voter_statistics)
 
@@ -63,7 +63,7 @@ raw_voting_locations<-
     show_col_types = FALSE
   )
 
-# Name organization#
+# Name organization #
 cleaned_voting_locations <-
   clean_names(raw_voting_locations)
 
