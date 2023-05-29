@@ -32,16 +32,6 @@ cleaned_voter_statistics <-
 
 head(cleaned_voter_statistics)
 
-# Rename % voted column #
-# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
-cleaned_voter_statistics <-
-  cleaned_voter_statistics |>
-  rename(
-    %_voted = percentage_voted,
-  )
-
-head(cleaned_voter_statistics)
-
 # select columns of interest #
 cleaned_voter_statistics <-
   cleaned_voter_statistics |>
@@ -50,6 +40,7 @@ cleaned_voter_statistics <-
     sub,
     total_eligible_electors,
     number_voted,
+    percent_voted
   )
 head(cleaned_voter_statistics)
 
