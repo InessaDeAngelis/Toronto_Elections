@@ -18,10 +18,22 @@ readr::read_csv("inputs/data/raw_voter_statistics.csv")
 # Read in the raw voting locations data. 
 readr::read_csv("inputs/data/raw_voting_locations.csv")
 
-#### Data Cleaning ####
+#### Basic cleaning ####
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+raw_voter_statistics <-
+  read_csv(
+    file = "inputs/data/raw_voter_statistics.csv",
+    show_col_types = FALSE
+  )
+
+# Name organization#
+cleaned_voter_statistics <-
+  clean_names(raw_voter_statistics)
+
+head(cleaned_voter_statistics)
 
 # select columns of interest #
-raw_voter_statistics |>
+cleaned_voter_statistics <-
   select(
     ward,
     sub,
