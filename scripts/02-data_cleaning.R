@@ -44,6 +44,13 @@ cleaned_voter_statistics <-
   )
 head(cleaned_voter_statistics)
 
+# save cleaned voter statistics data #
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+write_csv(
+  x = cleaned_voter_statistics,
+  file = "cleaned_voter_statistics.csv"
+)
+
 #### Basic cleaning - voting locations ####
 
 #### Basic cleaning ####
