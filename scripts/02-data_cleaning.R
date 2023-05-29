@@ -78,3 +78,10 @@ cleaned_voting_locations <-
     geometry
   )
 head(cleaned_voting_locations)
+
+# save cleaned voting locations data #
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+write_csv(
+  x = cleaned_voting_locations,
+  file = "cleaned_voting_locations.csv"
+)
