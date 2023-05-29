@@ -11,5 +11,26 @@ bibliography: ref.bib
 ---
 
 ```{r}
+#| message: false
+#| echo: false
+
+#### Workspace set-up ####
+
+## Load packages
+library(tidyverse)
+
+# Read in cleaned data #
+
+cleaned_voter_statistics <-
+  read_csv(
+    file = "cleaned_voter_statistics.csv",
+    show_col_types = FALSE
+  )
+
+cleaned_voting_locations <-
+  read_csv(
+    file = "cleaned_voter_statistics.csv",
+    show_col_types = FALSE
+  )
 
 ```
