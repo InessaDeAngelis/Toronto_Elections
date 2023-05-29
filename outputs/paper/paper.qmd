@@ -29,7 +29,7 @@ cleaned_voter_statistics <-
 
 cleaned_voting_locations <-
   read_csv(
-    file = "cleaned_voter_statistics.csv",
+    file = "cleaned_voting_locations.csv",
     show_col_types = FALSE
   )
 
