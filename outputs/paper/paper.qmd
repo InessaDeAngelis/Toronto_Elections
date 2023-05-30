@@ -1,7 +1,7 @@
 ---
 title: "Do More Polling Locations in Wards Increase Turnout? An Analysis of the 2022 Toronto Municipal Election"
 author: "Inessa De Angelis"
-thanks: "Code and data from this analysis are available at: https://github.com/InessaDeAngelis/Toronto_Elections."
+thanks: "Code and data from this analysis are available at: https://github.com/InessaDeAngelis/Toronto_Elections"
 date: "today"
 date-format: "long" 
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
@@ -30,3 +30,8 @@ show_col_types = FALSE
 ```
 
 ## Introduction
+As mandated by the Government of Ontario, residents of the City of Toronto went to the polls on October 24, 2022 to elect a mayor, councillors, and school board trustees. Then-sitting Mayor, John Tory sought re-election, along with a number of incumbent city councillors. Coming out of the height of the Covid-19 pandemic, the 2022 election largely upheld the status quo and did not feature ambitious policy platforms. Voter turnout across the city was 29.7% - the lowest in the city’s history since amalgamation in 1997, with turnout ranging on a ward-by-ward basis from 22.1% to 38.5% (Warren, 2022; Marshall, 2023). 
+
+Individual turnout by ward largely depended on local candidates and the accessibility of subdivisions to cast a ballot. The City of Toronto @ElectionDictionary defines a ward as “a geographical area represented by a member of Council.” Following Premier Doug Ford’s decision in the summer of 2018 to cut down the number of wards in the city to match federal and provincial riding boundaries, there are currently 25 wards in the City of Toronto (Lucas & McGregor, 2021). Subdivisions are defined by the City of Toronto [@VoterStatistics] as “.... geographical area[s within a ward] designated by the City Clerk.” Previous studies concentrating on large cities in the United States, including Atlanta revealed that having polling locations in close proximity to a voter’s home bolsters turnout and even minor changes in placement of a polling location can have significant impact on a voter’s decision to cast a ballot (Haspel & Knotts, 2005). There has been little research into the impact of polling location placement in relation to election turnout, especially in Canadian cities like Toronto and this paper will contribute to the investigation of this phenomenon. 
+
+To examine the placement of subdivisions on voter turnout, this paper is organized into the following sections: Data, Results, Discussion, and Conclusion.  In the Data section, I discuss the nature of the spreadsheets obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto] and the steps I took to clean and analyze the data. The Results section highlights trends found during the analysis process, while the Discussion section further evaluates the trends and presents insight. Lastly, the Conclusion section summarizes the main findings from this paper. 
