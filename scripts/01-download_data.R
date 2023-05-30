@@ -19,6 +19,13 @@ list_package_resources("https://open.toronto.ca/dataset/elections-voting-locatio
   head(1) |>
   get_resource()
 
+# save raw voting locations data #
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+write_csv(
+  x = raw_voting_locations,
+  file = "raw_voting_locations.csv"
+)
+
 #### Download voter statistics data ####
 # Code referenced from: https://cran.r-project.org/web/packages/opendatatoronto/opendatatoronto.pdf
 # & https://github.com/sharlagelfand/opendatatoronto/blob/main/vignettes/articles/multiple_resources_purrr.Rmd
@@ -27,6 +34,13 @@ list_package_resources("7dc606ab-f042-4d90-99e2-9247cb5953d2") |>
   filter(grepl("2022", name)) |>
   head(1) |>
   get_resource()
+
+# save raw voter statistics data #
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+write_csv(
+  x = raw_voter_statistics,
+  file = "raw_voter_statistics.csv"
+)
 
 #### Read municipal election data ####
 
