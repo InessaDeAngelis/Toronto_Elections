@@ -20,6 +20,7 @@ bibliography: ref.bib
 library(tidyverse)
 library(knitr)
 library(here)
+library(sf)
 
 #read in cleaned data #
 cleaned_voter_statistics <- read.csv(here::here("inputs/data/cleaned_voter_statistics.csv"))
@@ -40,7 +41,24 @@ To examine the impact of subdivision placement on voter turnout, this paper is o
 The data utilized throughout this paper was obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto]. The two different data sets used are: “Elections Voting Locations” [@VotingLocations] and “Elections - Voter Statistics” [@VoterStatistics]. Data was collected and analyzed using the statistical programming software R (R Core Team, 2022), with additional support from from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], and `janitor` [@rJanitor]. A further discussion of the data collection, cleaning, and analysis process can be found later on in this paper. 
 
 ### Election Voting Locations
-This dataset, published by the City Clerk's Office [@VotingLocations] highlights all polling locations and subdivisions, on a ward-by-ward basis from the 2022 municipal election. This data was last refreshed on November 2, 2022 and captured for this paper on May 21, 2023. The polling locations account for Advance Vote, election day, and Mail In Voting. One subdivision in a ward is equivalent to one polling location, based on geography. In each ward, subdivision 97 accounts for Mail In Voting, while subdivisions 98 and 99 are designated Advance Vote locations. Voters can request a Mail In ballot, go to one of the two Advance Vote locations during the designated days, or vote at their assigned subdivision on election day (for example: ward 11, subdivision 11).
+This dataset, published by the City Clerk's Office [@VotingLocations] highlights all polling locations and subdivisions, on a ward-by-ward basis from the 2022 municipal election. This data was last refreshed on November 2, 2022 and captured for this paper on May 21, 2023. The polling locations account for Advance Vote, election day, and Mail In Voting. One subdivision in a ward is equivalent to one polling location, based on geography. In each ward, subdivision 97 accounts for Mail In Voting, while subdivisions 98 and 99 are designated Advance Vote locations. Voters can request a Mail In ballot, go to one of the two Advance Vote locations during the designated days, or vote at their assigned subdivision on election day (for example: Ward 11, Subdivision 11).
+
+```{r}
+#| message: false
+#| echo: false
+#| label: tbl-cleaned_voting_location
+#| tbl-cap: Sample of Cleaned Voting Locations Data
+
+# code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
+# & https://tellingstorieswithdata.com/20-r_essentials.html 
+head (cleaned_voting_locations, 5) |>
+  select(point_short_code, point_long_code, address_full) |>
+  kable(
+    col.names = c("Subdivision", "Ward & Subdivision", "Address"),
+  booktabs = TRUE
+  )
+  
+```
 
 ### Election Voter Statistics
 This dataset, published by the City Clerk's Office [@VoterStatistics] comprises the number of eligible voters and corrections/additions to the Voter’s List for the 2022 municipal election. The dataset is broken down by ward and voting subdivision, including voting for school board trustees. This data set was last refreshed on February 7, 2023 and captured for this paper on May 21, 2023. This data set outlines the total number of eligible electors in Toronto, by ward, subdivision, and the entire city. 
@@ -53,7 +71,6 @@ Upon analysis, it was discovered that this data set included columns and data be
 #| label: tbl-cleaned_voter_statistics
 #| tbl-cap: Sample of Cleaned Voter Statistics Data
 
-# code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
 head (cleaned_voter_statistics, 5) |>
   kable(
     col.names = c("Ward", "Sub", "Total Eligible Electors",	"Number Voted",	"Percent Voted"),
