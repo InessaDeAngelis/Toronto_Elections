@@ -129,3 +129,10 @@ simulate_data |>
 # Check that voter turnout per ward is between 19% and 44% #
 simulate_data$turnout |> min() == 19
 simulate_data$turnout |> max() == 44
+
+# Check that the number of subdivisions per ward is between 50 and 75 #
+simulate_data |>
+  group_by(number_subdivision) |>
+  count() |>
+  filter(n > number_subdivision) |>
+  sum() == 0
