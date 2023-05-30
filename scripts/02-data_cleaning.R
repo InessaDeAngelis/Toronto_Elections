@@ -73,6 +73,7 @@ cleaned_voting_locations <-
   select(
     point_short_code,
     point_long_code,
+    address_full,
     geometry
   )
 head(cleaned_voting_locations)
