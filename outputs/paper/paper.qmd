@@ -19,8 +19,14 @@ bibliography: ref.bib
 ## Load packages
 library(tidyverse)
 library(knitr)
+library(here)
 
 #read in cleaned data #
+cleaned_voter_statistics <- read.csv(here::here("inputs/data/cleaned_voter_statistics.csv"))
+show_col_types = FALSE
 
-
+cleaned_voting_locations <- read.csv(here::here("inputs/data/cleaned_voting_locations.csv"))
+show_col_types = FALSE
 ```
+
+## Introduction
