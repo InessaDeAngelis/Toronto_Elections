@@ -1,5 +1,5 @@
 ---
-title: "Do More Polling Locations in Wards Increase Turnout? An Analysis of the 2022 Toronto Municipal Election"
+title: "Do More Subdivisions in Wards Increase Turnout? An Analysis of the 2022 Toronto Municipal Election"
 author: "Inessa De Angelis"
 thanks: "Code and data from this analysis are available at: https://github.com/InessaDeAngelis/Toronto_Elections" 
 date: "today"
@@ -34,7 +34,7 @@ As mandated by the Government of Ontario, residents of the City of Toronto went 
 
 Individual turnout by ward largely depended on local candidates and the accessibility of subdivisions to cast a ballot. The City of Toronto @ElectionDictionary defines a ward as “a geographical area represented by a member of Council.” Following Premier Doug Ford’s decision in the summer of 2018 to cut down the number of wards in the city to match federal and provincial riding boundaries, there are currently 25 wards in the City of Toronto [@BigCityElxns]. Subdivisions are defined by the City of Toronto [@VoterStatistics] as “.... geographical area[s within a ward] designated by the City Clerk.” Previous studies concentrating on large cities in the United States, including Atlanta revealed that having polling locations in close proximity to a voter’s home bolsters turnout and even minor changes in placement of a polling location can have significant impact on a voter’s decision to cast a ballot [@Locationx3]. There has been little research into the impact of polling location placement in relation to election turnout, especially in Canadian cities like Toronto and this paper will contribute to the investigation of this phenomenon. 
 
-To examine the placement of subdivisions on voter turnout, this paper is organized into the following sections: Data, Results, Discussion, and Conclusion.  In the Data section, I discuss the nature of the spreadsheets obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto] and the steps I took to clean and analyze the data. The Results section highlights trends found during the analysis process, while the Discussion section further evaluates the trends and presents insight. Lastly, the Conclusion section summarizes the main findings from this paper. 
+To examine the impact of subdivision placement on voter turnout, this paper is organized into the following sections: Data, Results, Discussion, and Conclusion.  In the Data section, I discuss the nature of the spreadsheets obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto] and the steps I took to clean and analyze the data. The Results section highlights trends found during the analysis process, while the Discussion section further evaluates the trends and presents insight. Lastly, the Conclusion section summarizes the main findings from this paper. 
 
 ## Data
 The data utilized throughout this paper was obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto]. The two different data sets used are: “Elections Voting Locations” [@VotingLocations] and “Elections - Voter Statistics” [@VoterStatistics]. Data was collected and analyzed using the statistical programming software R (R Core Team, 2022), with additional support from from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], and `janitor` [@rJanitor]. A further discussion of the data collection, cleaning, and analysis process can be found later on in this paper. 
@@ -45,7 +45,7 @@ This dataset, published by the City Clerk's Office [@VotingLocations] highlights
 ### Election Voter Statistics
 This dataset, published by the City Clerk's Office [@VoterStatistics] comprises the number of eligible voters and corrections/additions to the Voter’s List for the 2022 municipal election. The dataset is broken down by ward and voting subdivision, including voting for school board trustees. This data set was last refreshed on February 7, 2023 and captured for this paper on May 21, 2023. This data set outlines the total number of eligible electors in Toronto, by ward, subdivision, and the entire city. 
 
-Upon analysis, it was discovered that this data set included columns and data beyond the scope of this paper. I conducted basic cleaning of the data set to simplify column names and eliminate additional information (see tbl-cleaned_voter_statistics).
+Upon analysis, it was discovered that this data set included columns and data beyond the scope of this paper. I conducted basic cleaning of the data set to simplify column names and eliminate additional information (see @tbl-cleaned_voter_statistics).
 
 ```{r}
 #| message: false
@@ -56,7 +56,7 @@ Upon analysis, it was discovered that this data set included columns and data be
 # code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
 head (cleaned_voter_statistics, 5) |>
   kable(
-    col.names = c("ward", "sub", "total_eligible_electors",	"number_voted",	"percent_voted"),
+    col.names = c("Ward", "Sub", "Total Eligible Electors",	"Number Voted",	"Percent Voted"),
   booktabs = TRUE
   )
 
