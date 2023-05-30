@@ -21,6 +21,8 @@ library(tidyverse)
 library(knitr)
 library(here)
 library(sf)
+library(ggplot2)
+library(ggspatial)
 
 #read in cleaned data #
 cleaned_voter_statistics <- read.csv(here::here("inputs/data/cleaned_voter_statistics.csv"))
@@ -76,5 +78,21 @@ head (cleaned_voter_statistics, 5) |>
     col.names = c("Ward", "Sub", "Total Eligible Electors",	"Number Voted",	"Percent Voted"),
   booktabs = TRUE
   )
+
+```
+
+### Results
+
+```{r}
+#| message: false
+#| echo: false
+
+# code referenced from: https://sharlagelfand.github.io/opendatatoronto/articles/articles/spatial_data.html
+cleaned_voting_locations |>
+  c("address_full", "geometry")
+ggplot() +
+  geom_sf(data = address) +
+  geom_sf(data = geometry) +
+  theme_void()
 
 ```
