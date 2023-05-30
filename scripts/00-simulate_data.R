@@ -113,12 +113,19 @@ ggplot(data, aes(x=turnout, y=subdivisions)) +
 
 #### Data Validation ####
 
-# There are no more than 25 wards #
+# Check that there are no more than 25 wards #
 # Referenced code from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/scripts/00-simulation.R
 simulate_data |>
   group_by(ward) |>
   count() |>
   filter(n > ward) |>
   sum() == 0
-  
+
+# Check that voter turnout per ward is between 19% and 44% #
+simulate_data |>
+  group_by(turnout) |>
+  count() |>
+  filter(n > turnout)
+sum() == 0
+
   
