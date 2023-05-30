@@ -23,13 +23,13 @@ library(tidyverse)
 
 cleaned_voter_statistics <-
   read_csv(
-    file = "cleaned_voter_statistics.csv",
+    file = "inputs/data/cleaned_voter_statistics.csv",
     show_col_types = FALSE
   )
 
 cleaned_voting_locations <-
   read_csv(
-    file = "cleaned_voting_locations.csv",
+    file = "inputs/data/cleaned_voting_locations.csv",
     show_col_types = FALSE
   )
 
