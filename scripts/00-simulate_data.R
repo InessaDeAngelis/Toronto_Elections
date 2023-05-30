@@ -111,11 +111,14 @@ data <- data.frame(
 ggplot(data, aes(x=turnout, y=subdivisions)) + 
   geom_bar(stat = "identity") 
 
-#### Test simulated data ####
+#### Data Validation ####
 
-# Expectations #
-# There is no fewer than 1 ward and no more than 25 wards #
+# There are no more than 25 wards #
+# Referenced code from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/scripts/00-simulation.R
 simulate_data |>
-  runif(n = ward, min = 1, max = 25)
+  group_by(ward) |>
+  count() |>
+  filter(n > ward) |>
+  sum() == 0
   
   
