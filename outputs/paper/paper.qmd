@@ -18,19 +18,9 @@ bibliography: ref.bib
 
 ## Load packages
 library(tidyverse)
+library(knitr)
 
-# Read in cleaned data #
+#read in cleaned data #
 
-cleaned_voter_statistics <-
-  read_csv(
-    file = "inputs/data/cleaned_voter_statistics.csv",
-    show_col_types = FALSE
-  )
-
-cleaned_voting_locations <-
-  read_csv(
-    file = "inputs/data/cleaned_voting_locations.csv",
-    show_col_types = FALSE
-  )
 
 ```
