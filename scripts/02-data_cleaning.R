@@ -90,12 +90,21 @@ write_csv(
 # based on code from: https://tellingstorieswithdata.com/20-r_essentials.html 
 
 summarized_voter_statistics = 
-  cleaned_voter_statistics |>
-  group_by(ward) |>
-  count(sub)
-head(summarized_voter_statistics)
-  
 cleaned_voter_statistics |>
-summarise(sub = n(),
-          .by = ward)
+  slice(2:52) |>
+ reframe(sub) |>
+  summarise(
+    total = max(sub, na.rm = TRUE)
+  )
+summarized_voter_statistics
+
+
+summarized_voter_statistics = 
+  cleaned_voter_statistics |>
+  slice(58:125) |>
+  reframe(sub) |>
+  summarise(
+    total = max(sub, na.rm = TRUE)
+  )
+summarized_voter_statistics
 
