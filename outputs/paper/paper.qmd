@@ -107,17 +107,17 @@ ggplot() +
 # summarize ward data by number of subdivisions
 
 head (cleaned_voter_statistics, 5) |>
- select(ward, sub, percent_voted) |>
+ select(ward, sub) |>
   arrange (ward) |>
    kable(
-    col.names = c("Ward", "Sub", "Percent Voted"),
+    col.names = c("Ward", "Sub"),
   booktabs = TRUE
   )
 
 cleaned_voter_statistics |>
-  slice(2:53)
-
-  filter("ward" == 1) |>
-  select(ward, sub)
-
+  slice(2:52) |>
+  count(
+    total = max(sub, na.rm = TRUE)
+  )
+  
 ```
