@@ -19,10 +19,12 @@ bibliography: ref.bib
 ## Load packages
 library(tidyverse)
 library(knitr)
+library(kableExtra)
 library(here)
 library(sf)
 library(ggplot2)
 library(ggspatial)
+library(lubridate)
 
 #read in cleaned data #
 cleaned_voter_statistics <- read.csv(here::here("inputs/data/cleaned_voter_statistics.csv"))
@@ -94,5 +96,28 @@ ggplot() +
   geom_sf(data = address) +
   geom_sf(data = geometry) +
   theme_void()
+
+```
+
+
+```{r}
+#| message: false
+#| echo: false
+
+# summarize ward data by number of subdivisions
+
+head (cleaned_voter_statistics, 5) |>
+ select(ward, sub, percent_voted) |>
+  arrange (ward) |>
+   kable(
+    col.names = c("Ward", "Sub", "Percent Voted"),
+  booktabs = TRUE
+  )
+
+cleaned_voter_statistics |>
+  slice(2:53)
+
+  filter("ward" == 1) |>
+  select(ward, sub)
 
 ```
