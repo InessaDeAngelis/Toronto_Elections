@@ -89,22 +89,11 @@ write_csv(
 # count number of subdivisions per ward #
 # based on code from: https://tellingstorieswithdata.com/20-r_essentials.html 
 
-summarized_voter_statistics = 
-cleaned_voter_statistics |>
-  slice(2:52) |>
- reframe(sub) |>
-  summarise(
-    total = max(sub, na.rm = TRUE)
-  )
-summarized_voter_statistics
-
-
+#Ward 1
 summarized_voter_statistics = 
   cleaned_voter_statistics |>
-  slice(58:125) |>
-  reframe(sub) |>
-  summarise(
-    total = max(sub, na.rm = TRUE)
-  )
+  slice(2:52) |>
+  count(
+    total = max(sub, na.rm = TRUE),
 summarized_voter_statistics
-
+)
