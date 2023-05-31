@@ -9,6 +9,7 @@
 #### Workspace setup ####
 library(tidyverse)
 library(janitor)
+library(dplyr)
 
 #### Read in raw data ####
 
@@ -88,6 +89,8 @@ write_csv(
 # count number of subdivisions per ward #
 # based on code from: https://tellingstorieswithdata.com/20-r_essentials.html 
 cleaned_voter_statistics |>
-  filter("ward" == 1) |>
-summary("sub")
-  head(cleaned_voter_statistics)
+  filter(ward == 1) |>
+  summary("sub")
+head(cleaned_voter_statistics)
+
+  
