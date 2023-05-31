@@ -84,3 +84,10 @@ write_csv(
   x = cleaned_voting_locations,
   file = "cleaned_voting_locations.csv"
 )
+
+# count number of subdivisions per ward #
+# based on code from: https://tellingstorieswithdata.com/20-r_essentials.html 
+cleaned_voter_statistics |>
+  filter("ward" == 1) |>
+summary("sub")
+  head(cleaned_voter_statistics)
