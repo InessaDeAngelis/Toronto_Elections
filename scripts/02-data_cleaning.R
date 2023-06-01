@@ -97,3 +97,19 @@ summarized_voter_statistics =
     total = max(sub, na.rm = TRUE),
 summarized_voter_statistics
 )
+
+# Filter Ward 1 only
+summarized_voter_statistics = 
+  cleaned_voter_statistics |>
+  filter(ward == 1) 
+  summarized_voter_statistics
+  
+
+#Filter Ward 1 only and count number of subdivisions 
+summarized_voter_statistics = 
+  cleaned_voter_statistics |>
+  filter(ward == 24) |>
+  count(
+    total = max(sub, na.rm = TRUE)
+  )
+summarized_voter_statistics
