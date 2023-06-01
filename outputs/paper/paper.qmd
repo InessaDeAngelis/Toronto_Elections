@@ -69,6 +69,8 @@ This dataset, published by the City Clerk's Office [@VoterStatistics] comprises 
 
 Upon analysis, it was discovered that this data set included columns and data beyond the scope of this paper. I conducted basic cleaning of the data set to simplify column names and eliminate additional information (see @tbl-cleaned_voter_statistics).
 
+For the purpose of this paper, I did not include the Advance Vote and Mail In Voting subdivisions when counting the total number of subdivisions per ward. Firstly, there are only two Advance Vote locations distributed across every ward, meaning residents have to be motivated to travel farther away from their home to cast their ballot. Secondly, Mail In Voting requires applying online through Toronto Elections and then returning the completed Mail In Voting package by dropping it in a Canada Post mailbox or hand delivering it to one of the Toronto Elections drop boxes at select locations. Voters need to be more organized and motivated to vote in advance of election day.  
+
 ```{r}
 #| message: false
 #| echo: false
@@ -121,3 +123,10 @@ cleaned_voter_statistics |>
   )
   
 ```
+### Discussion
+
+
+### Conclusion
+
+
+### References
