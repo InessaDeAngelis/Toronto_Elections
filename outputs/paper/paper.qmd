@@ -22,9 +22,7 @@ library(tidyverse)
 library(knitr)
 library(kableExtra)
 library(here)
-library(sf)
 library(ggplot2)
-library(ggspatial)
 library(lubridate)
 
 #read in cleaned data #
@@ -86,19 +84,24 @@ head (cleaned_voter_statistics, 5) |>
 
 ```
 
-### Results
+## Results
 
 ```{r}
 #| message: false
 #| echo: false
 
-# code referenced from: https://sharlagelfand.github.io/opendatatoronto/articles/articles/spatial_data.html
-cleaned_voting_locations |>
-  c("address_full", "geometry")
-ggplot() +
-  geom_sf(data = address) +
-  geom_sf(data = geometry) +
-  theme_void()
+#code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
+cleaned_voter_statistics |>
+  ggplot(aes(x = ward), "-", sub, fill = location_type) + 
+  geom_bar() + #bar graph
+  theme_minimal() + #neater theme
+  theme(axis.text.x = element_text(angle=90, size = 6)) + #rotate x-axis & smaller font
+  labs(
+    title = "Number of Subdivisions Per Ward in Toronto",
+    x = "Ward",
+    y = "Number of Subdivisions",
+    fill = "Type"
+  )  #a
 
 ```
 
@@ -109,7 +112,7 @@ ggplot() +
 
 # summarize ward data by number of subdivisions
 
-head (cleaned_voter_statistics, 5) |>
+head (cleaned_voter_statistics, 60) |>
  select(ward, sub) |>
   arrange (ward) |>
    kable(
@@ -124,10 +127,10 @@ cleaned_voter_statistics |>
   )
   
 ```
-### Discussion
+## Discussion
 
 
-### Conclusion
+## Conclusion
 
 
-### References
+## References
