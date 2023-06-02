@@ -61,7 +61,7 @@ summarized_voter_statistics =
   ) |>
   arrange(desc(ward)) |>
   arrange(desc(n)) |>
-  select(ward, n)
+  select(ward, n) 
 summarized_voter_statistics
 
 # save summarized voter statistics data #
