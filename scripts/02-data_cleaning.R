@@ -59,11 +59,11 @@ summarized_voter_statistics =
   count(
     total = max(sub, na.rm = TRUE) 
   ) |>
-  arrange(desc(ward)) |>
+   arrange(desc(ward)) |>
   arrange(desc(n)) |>
   select(ward, n)
 summarized_voter_statistics
-
+    
 # save summarized voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
 write_csv(
