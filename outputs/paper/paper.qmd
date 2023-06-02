@@ -28,6 +28,10 @@ library(lubridate)
 #read in cleaned data #
 cleaned_voter_statistics <- read.csv(here::here("inputs/data/cleaned_voter_statistics.csv"))
 show_col_types = FALSE
+
+#read in cleaned data #
+summarized_voter_statistics <- read.csv(here::here("inputs/data/summarized_voter_statistics.csv"))
+show_col_types = FALSE
 ```
 
 ## Introduction
