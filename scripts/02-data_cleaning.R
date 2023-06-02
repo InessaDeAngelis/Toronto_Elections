@@ -55,19 +55,13 @@ write_csv(
 #Filter by ward and count number of subdivisions 
 summarized_voter_statistics = 
   cleaned_voter_statistics |>
-  group_by(ward) |>
+ group_by(ward) |>
   count(
     total = max(sub, na.rm = TRUE) 
   ) |>
   arrange(desc(ward)) |>
   arrange(desc(n)) |>
-  select(ward, n) 
-summarized_voter_statistics
-
-#add percent voted to summarized voter statistics
-summarized_voter_statistics <-
- summarized_voter_statistics |>
-  left_join(cleaned_voter_statistics, by = "percent_voted")
+  select(ward, n)
 summarized_voter_statistics
 
 # save summarized voter statistics data #
@@ -76,3 +70,14 @@ write_csv(
   x = summarized_voter_statistics,
   file = "summarized_voter_statistics.csv"
 )
+
+#### Data validation ####
+
+# Check that there are between 1 and 25 wards #
+# Referenced code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+summarized_voter_statistics$ward |> min() == 1
+summarized_voter_statistics$ward |> max() == 25
+
+# Check that number of subdivisions per ward is between 1 and 94
+summarized_voter_statistics$n |> min() == 1
+summarized_voter_statistics$n |> max() == 94
