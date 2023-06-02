@@ -45,11 +45,14 @@ cleaned_voter_statistics <-
   ) |>
 head(cleaned_voter_statistics)
 
+# Convert percent voted from character vector to numeric
+# Code referenced from: https://stackoverflow.com/questions/48273085/how-to-convert-a-character-vector-to-numeric
 cleaned_voter_statistics |>
   select(percent_voted) |>
   mutate(
-    percent_voted = as.numeric(percent_voted)
-  )
+    percent_voted = as.numeric(factor(percent_voted))
+)
+  
 
 # save cleaned voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
@@ -71,7 +74,10 @@ summarized_voter_statistics =
   ) |>
   select(ward, n) |>
   filter(n > 26) 
-summarized_voter_statistics
+summarized_voter_statistics |>
+rename(
+ subdivisions = n,
+) 
 
 # Summarize voter turnout by ward
 summarized_voter_turnout = 
@@ -88,7 +94,8 @@ cleaned_voter_statistics |>
     select(ward, percent_voted) |>
     group_by(ward) |>
     count(
-    percent_voted)
+      Turnout = mean(percent_voted)
+    )
   summarized_voter_turnout
 
 # save summarized voter statistics data #
