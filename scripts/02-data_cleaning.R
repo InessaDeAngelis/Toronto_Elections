@@ -48,7 +48,7 @@ head(cleaned_voter_statistics)
 cleaned_voter_statistics |>
   select(percent_voted) |>
   mutate(
-  percent_voted = as.numeric(percent_voted)
+  percent_voted = as.integer(percent_voted)
   )
 
 # save cleaned voter statistics data #
@@ -79,7 +79,7 @@ cleaned_voter_statistics |>
   select(ward, percent_voted) |>
   group_by(ward) |>
     count(
-      turnout = mean(percent_voted, na.rm = TRUE) 
+      turnout = mean(percent_voted, na.rm = TRUE)
     ) 
   summarized_voter_turnout
 
