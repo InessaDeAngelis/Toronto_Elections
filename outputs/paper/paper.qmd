@@ -83,18 +83,17 @@ summarized_voter_statistics |>
 #| message: false
 #| echo: false
 
-#code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
 summarized_voter_statistics |>
-  ggplot(aes(x = ward), "-", sub, fill = n) + 
-  geom_bar() + #bar graph
-  theme_minimal() + #neater theme
-  theme(axis.text.x = element_text(angle=90, size = 6)) + #rotate x-axis & smaller font
+  ggplot(mapping = aes(x = ward, y = n)) +
+  geom_bar(stat = "identity") +
   labs(
-    title = "Number of Subdivisions Per Ward in Toronto",
+    title = "Number of Subdivisions per Ward",
     x = "Ward",
     y = "Number of Subdivisions",
-    fill = "Type"
-  )  #a
+  ) +
+  theme_classic() +
+  scale_fill_brewer(palette = "Set1")
+  
 
 ```
 
@@ -105,9 +104,7 @@ summarized_voter_statistics |>
 
 # summarize ward data by number of subdivisions
 
-head (cleaned_voter_statistics, 60) |>
- select(ward, sub) |>
-  arrange (ward) |>
+head (summarized_voter_statistics, 60) |>
    kable(
     col.names = c("Ward", "Sub"),
   booktabs = TRUE
