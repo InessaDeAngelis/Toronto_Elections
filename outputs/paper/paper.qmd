@@ -28,9 +28,6 @@ library(lubridate)
 #read in cleaned data #
 cleaned_voter_statistics <- read.csv(here::here("inputs/data/cleaned_voter_statistics.csv"))
 show_col_types = FALSE
-
-cleaned_voting_locations <- read.csv(here::here("inputs/data/cleaned_voting_locations.csv"))
-show_col_types = FALSE
 ```
 
 ## Introduction
@@ -43,32 +40,12 @@ To examine the impact of subdivision placement on voter turnout, this paper is o
 ## Data
 The data utilized throughout this paper was obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto]. The two different data sets used are: “Elections Voting Locations” [@VotingLocations] and “Elections - Voter Statistics” [@VoterStatistics]. Data was collected and analyzed using the statistical programming software R (@r), with additional support from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `janitor` [@rJanitor], and `here` [@rHere]. A further discussion of the data collection, cleaning, and analysis process can be found later on in this paper. 
 
-### Election Voting Locations
-This dataset, published by the City Clerk's Office [@VotingLocations] highlights all polling locations and subdivisions, on a ward-by-ward basis from the 2022 municipal election. This data was last refreshed on November 2, 2022 and captured for this paper on May 21, 2023. The polling locations account for Advance Vote, election day, and Mail In Voting. One subdivision in a ward is equivalent to one polling location, based on geography. In each ward, subdivision 97 accounts for Mail In Voting, while subdivisions 98 and 99 are designated Advance Vote locations. Voters can request a Mail In ballot, go to one of the two Advance Vote locations during the designated days, or vote at their assigned subdivision on election day (for example: Ward 11, Subdivision 11).
-
-```{r}
-#| message: false
-#| echo: false
-#| label: tbl-cleaned_voting_location
-#| tbl-cap: Sample of Cleaned Voting Locations Data
-
-# code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
-# & https://tellingstorieswithdata.com/20-r_essentials.html 
-head (cleaned_voting_locations, 5) |>
-  select(point_short_code, point_long_code, address_full) |>
-  kable(
-    col.names = c("Subdivision", "Ward & Subdivision", "Address"),
-  booktabs = TRUE
-  )
-  
-```
-
 ### Election Voter Statistics
 This dataset, published by the City Clerk's Office [@VoterStatistics] comprises the number of eligible voters and corrections/additions to the Voter’s List for the 2022 municipal election. The dataset is broken down by ward and voting subdivision, including voting for school board trustees. This data set was last refreshed on February 7, 2023 and captured for this paper on May 21, 2023. This data set outlines the total number of eligible electors in Toronto, by ward, subdivision, and the entire city. 
 
 Upon analysis, it was discovered that this data set included columns and data beyond the scope of this paper. I conducted basic cleaning of the data set to simplify column names and eliminate additional information (see @tbl-cleaned_voter_statistics).
 
-For the purpose of this paper, I did not include the Advance Vote and Mail In Voting subdivisions when counting the total number of subdivisions per ward. Firstly, there are only two Advance Vote locations distributed across every ward, meaning residents have to be motivated to travel farther away from their home to cast their ballot. Secondly, Mail In Voting requires applying online through Toronto Elections and then returning the completed Mail In Voting package by dropping it in a Canada Post mailbox or hand delivering it to one of the Toronto Elections drop boxes at select locations. Voters need to be more organized and motivated to vote in advance of election day.  
+For the purpose of this paper, I included the Advance Vote and Mail In Voting subdivisions when counting the total number of subdivisions per ward. Firstly, there are only two Advance Vote locations distributed across every ward, meaning residents have to be motivated to travel farther away from their home to cast their ballot. Secondly, Mail In Voting requires applying online through Toronto Elections and then returning the completed Mail In Voting package by dropping it in a Canada Post mailbox or hand delivering it to one of the Toronto Elections drop boxes at select locations. Voters need to be more organized and motivated to vote in advance of election day.  
 
 ```{r}
 #| message: false
