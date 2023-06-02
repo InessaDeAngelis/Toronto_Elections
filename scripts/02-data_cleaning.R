@@ -97,7 +97,8 @@ summarized_voter_statistics =
     total = max(sub, na.rm = TRUE) 
   ) |>
   arrange(desc(ward)) |>
-  arrange(desc(n))
+  arrange(desc(n)) |>
+  select(ward, n)
 summarized_voter_statistics
 
 
