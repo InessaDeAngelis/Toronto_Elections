@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Cleans the raw voter statistics and voting locations data by simplifying names and selecting the relevant columns from each data set
+# Purpose: Cleans the raw voter statistics by simplifying names and selecting the relevant columns from the data set
 # Author: Inessa De Angelis
 # Date: 25 May 2023
 # Contact: inessa.deangelis@mail.utoronto.ca 
@@ -15,9 +15,6 @@ library(dplyr)
 
 # Read in the raw voter statistics data. 
 readr::read_csv("inputs/data/raw_voter_statistics.csv")
-
-# Read in the raw voting locations data. 
-readr::read_csv("inputs/data/raw_voting_locations.csv")
 
 #### Basic cleaning - voter statistics ####
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
@@ -52,40 +49,6 @@ write_csv(
   file = "cleaned_voter_statistics.csv"
 )
 
-#### Basic cleaning - voting locations ####
-
-#### Basic cleaning ####
-# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
-raw_voting_locations<-
-  read_csv(
-    file = "inputs/data/raw_voting_locations.csv",
-    show_col_types = FALSE
-  )
-
-# Name organization #
-cleaned_voting_locations <-
-  clean_names(raw_voting_locations)
-
-head(cleaned_voting_locations)
-
-# select columns of interest #
-cleaned_voting_locations <-
-  cleaned_voting_locations |>
-  select(
-    point_short_code,
-    point_long_code,
-    address_full,
-    geometry
-  )
-head(cleaned_voting_locations)
-
-# save cleaned voting locations data #
-# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
-write_csv(
-  x = cleaned_voting_locations,
-  file = "cleaned_voting_locations.csv"
-)
-
 # count number of subdivisions per ward #
 # based on code from: https://tellingstorieswithdata.com/20-r_essentials.html 
 
@@ -98,9 +61,14 @@ summarized_voter_statistics =
   ) |>
   arrange(desc(ward)) |>
   arrange(desc(n)) |>
-  select(ward, n)
+  select(ward, n) 
 summarized_voter_statistics
 
+#add percent voted to summarized voter statistics
+summarized_voter_statistics <-
+ summarized_voter_statistics |>
+  left_join(cleaned_voter_statistics, by = "percent_voted")
+summarized_voter_statistics
 
 # save summarized voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
