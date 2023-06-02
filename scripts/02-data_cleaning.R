@@ -61,8 +61,7 @@ summarized_voter_statistics =
   ) |>
   arrange(desc(ward)) |>
   arrange(desc(n)) |>
-  select(ward, n) |>
-  filter(!grepl('total', ward))
+  select(ward, n)
 summarized_voter_statistics
 
 # save summarized voter statistics data #
@@ -74,11 +73,18 @@ write_csv(
 
 #### Data validation ####
 
-# Check that there are between 1 and 25 wards #
-# Referenced code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
-summarized_voter_statistics$ward |> min() == 1
-summarized_voter_statistics$ward |> max() == 25
+# Check that there are no more than 25 wards #
+# Referenced code from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/scripts/00-simulation.R
+summarized_voter_statistics |>
+  group_by(ward) |>
+  count() |>
+  filter(n > ward) |>
+  sum() == 0
 
 # Check that number of subdivisions per ward is between 1 and 94
 summarized_voter_statistics$n |> min() == 1
 summarized_voter_statistics$n |> max() == 94
+
+# Check that voter turnout is between 11% and 100% #
+cleaned_voter_statistics$percent_voted |> min() == 1
+cleaned_voter_statistics$percent_voted|> max() == 100
