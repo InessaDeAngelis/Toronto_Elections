@@ -64,7 +64,7 @@ summarized_voter_statistics =
     total = max(sub, na.rm = TRUE) 
   ) |>
   select(ward, n) |>
-  filter(n > 1) 
+  filter(n > 26) 
 summarized_voter_statistics
 
 # save summarized voter statistics data #
@@ -84,8 +84,8 @@ summarized_voter_statistics |>
   filter(n > ward) |>
   sum() == 0
 
-# Check that number of subdivisions per ward is between 1 and 94
-summarized_voter_statistics$n |> min() == 1
+# Check that number of subdivisions per ward is between 38 and 94
+summarized_voter_statistics$n |> min() == 38
 summarized_voter_statistics$n |> max() == 94
 
 # Check that voter turnout is between 11% and 100% #
