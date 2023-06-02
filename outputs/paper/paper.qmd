@@ -70,7 +70,7 @@ I further cleaned the cleaned voter statistics data set to count the number of s
 #| message: false
 #| echo: false
 
-head(summarized_voter_statistics, 25) |>
+summarized_voter_statistics |>
   kable(
     col.names = c("Ward", "Number of Subdivisions"), 
     booktabs = TRUE
@@ -84,8 +84,8 @@ head(summarized_voter_statistics, 25) |>
 #| echo: false
 
 #code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
-cleaned_voter_statistics |>
-  ggplot(aes(x = ward), "-", sub, fill = location_type) + 
+summarized_voter_statistics |>
+  ggplot(aes(x = ward), "-", sub, fill = n) + 
   geom_bar() + #bar graph
   theme_minimal() + #neater theme
   theme(axis.text.x = element_text(angle=90, size = 6)) + #rotate x-axis & smaller font
