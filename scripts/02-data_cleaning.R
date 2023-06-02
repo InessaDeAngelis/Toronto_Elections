@@ -39,6 +39,9 @@ cleaned_voter_statistics <-
     total_eligible_electors,
     number_voted,
     percent_voted
+  ) |>
+  mutate(
+    ward = as.numeric(ward)
   )
 head(cleaned_voter_statistics)
 
