@@ -55,15 +55,16 @@ write_csv(
 #Filter by ward and count number of subdivisions 
 summarized_voter_statistics = 
   cleaned_voter_statistics |>
- group_by(ward) |>
+  select(ward, sub, percent_voted) |>
+  group_by(ward) |>
   count(
     total = max(sub, na.rm = TRUE) 
   ) |>
-   arrange(desc(ward)) |>
-  arrange(desc(n)) |>
-  select(ward, n)
+  select(ward, n) |>
+  arrange(desc(ward)) |>
+  arrange(desc(n)) 
 summarized_voter_statistics
-    
+
 # save summarized voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
 write_csv(
