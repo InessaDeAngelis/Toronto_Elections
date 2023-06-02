@@ -87,5 +87,5 @@ summarized_voter_statistics$n |> min() == 1
 summarized_voter_statistics$n |> max() == 94
 
 # Check that voter turnout is between 11% and 100% #
-cleaned_voter_statistics$percent_voted |> min() == 1
+cleaned_voter_statistics$percent_voted |> min() == 11
 cleaned_voter_statistics$percent_voted|> max() == 100
