@@ -1,14 +1,13 @@
 #### Preamble ####
-# Purpose: Simulate the 2022 Toronto Municipal Election voter statistics and voting locations data sets 
+# Purpose: Simulate the 2022 Toronto Municipal Election voter statistics data set
 # Author: Inessa De Angelis
 # Date: 28 May 2023 
 # Contact: inessa.deangelis@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: none
 # Data sets:
-## - https://open.toronto.ca/dataset/elections-voting-locations/ 
 ## - https://open.toronto.ca/dataset/elections-voter-statistics/ 
-# Note: Only download the 2022 election data from the webpages
+# Note: Only download the 2022 election data from the webpage
 
 #### Workspace setup ####
 library(tidyverse)
