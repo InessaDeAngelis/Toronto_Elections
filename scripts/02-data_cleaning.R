@@ -89,27 +89,21 @@ write_csv(
 # count number of subdivisions per ward #
 # based on code from: https://tellingstorieswithdata.com/20-r_essentials.html 
 
-#Ward 1
+#Filter by ward and count number of subdivisions 
 summarized_voter_statistics = 
   cleaned_voter_statistics |>
-  slice(2:52) |>
+  group_by(ward) |>
   count(
-    total = max(sub, na.rm = TRUE),
+    total = max(sub, na.rm = TRUE) 
+  ) |>
+  arrange(desc(ward)) |>
+  arrange(desc(n))
 summarized_voter_statistics
+
+
+# save summarized voter statistics data #
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+write_csv(
+  x = summarized_voter_statistics,
+  file = "summarized_voter_statistics.csv"
 )
-
-# Filter Ward 1 only
-summarized_voter_statistics = 
-  cleaned_voter_statistics |>
-  filter(ward == 1) 
-  summarized_voter_statistics
-  
-
-#Filter Ward 1 only and count number of subdivisions 
-summarized_voter_statistics = 
-  cleaned_voter_statistics |>
-  filter(ward == 24) |>
-  count(
-    total = max(sub, na.rm = TRUE)
-  )
-summarized_voter_statistics
