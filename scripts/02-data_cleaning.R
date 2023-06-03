@@ -84,7 +84,7 @@ summarized_voter_turnout =
   select(ward, percent_voted) |>
   group_by(ward) |>
   count(
-    Turnout = mean(percent_voted)
+    Turnout = mean(percent_voted) 
   )
 summarized_voter_turnout
 
