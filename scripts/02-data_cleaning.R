@@ -78,37 +78,26 @@ rename(
  subdivisions = n,
 ) 
 
-# Summarize voter turnout by ward
-summarized_voter_turnout =
-cleaned_voter_statistics |>
-  select(ward, percent_voted) |>
-  mutate(
-    percent_voted = as.numeric(factor(percent_voted))
-  ) |>
-  group_by(ward) |>
-  summarise(
-    Turnout = mean(percent_voted, na.rm = TRUE)
-  ) 
-summarized_voter_turnout
-
-#Find voter turnout by ward
-summarized_voter_turnout = 
-  transpose((cleaned_voter_statistics[56,]))[[1]]
-summarized_voter_turnout
-
-summarized_voter_turnout = 
-  transpose((cleaned_voter_statistics[129,]))[[1]] 
-summarized_voter_turnout
-
-summarized_voter_turnout = 
-  transpose((cleaned_voter_statistics[216,]))[[1]] 
-summarized_voter_turnout
-  
 # save summarized voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
 write_csv(
   x = summarized_voter_statistics,
   file = "summarized_voter_statistics.csv"
+)
+
+# Add voter turnout by ward from cleaned_voter_statistics data set
+summarized_voter_turnout <-
+  data <- data.frame(
+    ward=c("1","2","3","4","5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25") ,  
+    turnout=c(24, 30, 33, 38, 28, 25, 22, 32, 31, 24, 32, 34, 29, 36, 33, 31, 27, 29, 36, 32, 26, 26, 25, 27, 27)
+  )
+summarized_voter_turnout
+  
+# save summarized voter turnout data #
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+write_csv(
+  x = summarized_voter_turnout,
+  file = "summarized_voter_turnout.csv"
 )
 
 #### Data validation ####
@@ -122,9 +111,9 @@ summarized_voter_statistics |>
   sum() == 0
 
 # Check that number of subdivisions per ward is between 38 and 94
-summarized_voter_statistics$subdivisions |> min() == 38
-summarized_voter_statistics$subdivisions |> max() == 94
+summarized_voter_statistics$n |> min() == 38
+summarized_voter_statistics$n |> max() == 94
 
-# Check that voter turnout is between 11% and 100% #
-cleaned_voter_statistics$percent_voted |> min() == 11
-cleaned_voter_statistics$percent_voted|> max() == 100
+# Check that voter turnout is between 22% and 38% #
+summarized_voter_turnout$turnout |> min() == 22
+summarized_voter_turnout$turnout|> max() == 38
