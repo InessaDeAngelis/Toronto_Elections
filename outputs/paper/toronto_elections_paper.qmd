@@ -177,13 +177,14 @@ finalized_voter_statistics |>
 
 #Voter turnout by ward
 #Code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.pdf
+# & https://stackoverflow.com/questions/66652330/error-ggplot-continuous-x-aesthetic-did-you-forget-aesgroup
 finalized_voter_statistics |>
-  ggplot(aes(x = turnout, y = n, label = ward)) + 
-  geom_point() + 
+  ggplot(aes(x = factor(turnout), y = n, label = ward)) +
+  geom_point(aes(group = turnout)) + 
   geom_beeswarm() +
-  geom_smooth(method=lm, se=FALSE) + 
-  geom_text(hjust=-0.5, vjust=0.5) + 
-  labs(
+  geom_smooth(method="lm")+
+  geom_text(hjust=-05, vjust=0.5) + 
+labs(
     title = "Number of Subdivisions vs Voter Turnout by Ward",
     x = "Turnout (%)",
     y = "Subdivisions",
