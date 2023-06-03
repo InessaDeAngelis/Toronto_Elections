@@ -53,7 +53,6 @@ cleaned_voter_statistics |>
     percent_voted = as.numeric(factor(percent_voted))
 )
   
-
 # save cleaned voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
 write_csv(
@@ -80,16 +79,7 @@ rename(
 ) 
 
 # Summarize voter turnout by ward
-summarized_voter_turnout = 
-cleaned_voter_statistics |>
-  select(ward, percent_voted) |>
-  group_by(ward) |>
-    count(
-      turnout = mean(percent_voted, na.rm = TRUE)
-    ) 
-  summarized_voter_turnout
-  
-  summarized_voter_turnout = 
+ summarized_voter_turnout = 
     cleaned_voter_statistics |>
     select(ward, percent_voted) |>
     group_by(ward) |>
