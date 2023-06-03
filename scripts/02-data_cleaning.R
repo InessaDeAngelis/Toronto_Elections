@@ -79,7 +79,7 @@ rename(
 ) 
 
 # Summarize voter turnout by ward
- summarized_voter_turnout = 
+summarized_voter_turnout = 
     cleaned_voter_statistics |>
     select(ward, percent_voted) |>
     group_by(ward) |>
