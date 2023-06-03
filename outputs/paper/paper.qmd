@@ -80,7 +80,7 @@ head(summarized_voter_statistics, 5) |>
 ```
 
 ## Results
-During the 2022 municipal election, there were 1,535 subdivisions across Toronto's 25 wards. Ward 10 had the highest number of subdivisions at 94, while Ward 23 had the lowest number at 38. Ward 13 had the second highest number of subdivisions at 90, with Ward 3 coming in third highest with 83 subdivisions. Ward 7 had the second lowest number of subdivisions at 47, following by Ward 25 with 48. The range of subdivisions within Wards varied more than anticipated, given that ward boundaries and their corresponding population are relatively equal.
+During the 2022 municipal election, there were 1,535 subdivisions across Toronto's 25 wards. Ward 10 (Spadina-Fort York) had the highest number of subdivisions at 94, while Ward 23 (Scarborough North) had the lowest number at 38. Ward 13 (Toronto Centre) had the second highest number of subdivisions at 90, with Ward 3 (Etobicoke-Lakeshore) coming in third highest with 83 subdivisions. Ward 7 (Humber River-Black Creek) had the second lowest number of subdivisions at 47, following by Ward 25 (Scarborough-Rouge Park) with 48. The range of subdivisions within Wards varied more than anticipated, given that ward boundaries and their corresponding population are relatively equal.
 
 ```{r}
 #| message: false
