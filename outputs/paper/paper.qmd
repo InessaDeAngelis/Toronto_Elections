@@ -35,14 +35,14 @@ show_col_types = FALSE
 ```
 
 ## Introduction
-As mandated by the Government of Ontario, residents of the City of Toronto went to the polls on October 24, 2022 to elect a mayor, councillors, and school board trustees. Then-sitting Mayor, John Tory sought re-election, along with a number of incumbent city councillors. Coming out of the height of the Covid-19 pandemic, the 2022 election largely upheld the status quo and did not feature ambitious policy platforms. Voter turnout across the city was 29.7% - the lowest in the city’s history since amalgamation in 1997, with turnout ranging on a ward-by-ward basis from 22.1% to 38.5% [@Turnout22; @DismalTurnout]. 
+As mandated by the Government of Ontario, residents of the City of Toronto went to the polls on October 24, 2022 to elect a mayor, councillors, and school board trustees. Then-sitting Mayor, John Tory sought re-election, along with a number of incumbent city councillors. Coming out of the height of the Covid-19 pandemic, the 2022 election largely upheld the status quo and did not feature ambitious policy platforms. Voter turnout across the city was 29.7% - the lowest in the city’s history since amalgamation in 1997, with turnout ranging on a ward-by-ward basis from 22% to 38% [@Turnout22; @DismalTurnout]. 
 
 Individual turnout by ward largely depended on local candidates and the accessibility of subdivisions to cast a ballot. The City of Toronto @ElectionDictionary defines a ward as “a geographical area represented by a member of Council.” Following Premier Doug Ford’s decision in the summer of 2018 to cut down the number of wards in the city to match federal and provincial riding boundaries, there are currently 25 wards in the City of Toronto [@BigCityElxns]. Subdivisions are defined by the City of Toronto [@VoterStatistics] as “.... geographical area[s within a ward] designated by the City Clerk.” Previous studies concentrating on large cities in the United States, including Atlanta revealed that having polling locations in close proximity to a voter’s home bolsters turnout and even minor changes in placement of a polling location can have significant impact on a voter’s decision to cast a ballot [@Locationx3]. There has been little research into the impact of polling location placement in relation to election turnout, especially in Canadian cities like Toronto and this paper will contribute to the investigation of this phenomenon. 
 
 To examine the impact of subdivision placement on voter turnout, this paper is organized into the following sections: Data, Results, Discussion, and Conclusion.  In the Data section, I discuss the nature of the spreadsheets obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto] and the steps I took to clean and analyze the data. The Results section highlights trends found during the analysis process, while the Discussion section further evaluates the trends and presents insight. Lastly, the Conclusion section summarizes the main findings from this paper. 
 
 ## Data
-The data utilized throughout this paper was obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto]. The two different data sets used are: “Elections Voting Locations” [@VotingLocations] and “Elections - Voter Statistics” [@VoterStatistics]. Data was collected and analyzed using the statistical programming software R (@r), with additional support from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `janitor` [@rJanitor], and `here` [@rHere]. A further discussion of the data collection, cleaning, and analysis process can be found later on in this paper. 
+The data utilized throughout this paper was obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto]. The data sets used is entitled “Elections - Voter Statistics” [@VoterStatistics]. Data was collected and analyzed using the statistical programming software R (@r), with additional support from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `janitor` [@rJanitor], and `here` [@rHere]. A further discussion of the data collection, cleaning, and analysis process can be found later on in this paper. 
 
 ### Election Voter Statistics
 This dataset, published by the City Clerk's Office [@VoterStatistics] comprises the number of eligible voters and corrections/additions to the Voter’s List for the 2022 municipal election. The dataset is broken down by ward and voting subdivision, including voting for school board trustees. This data set was last refreshed on February 7, 2023 and captured for this paper on May 21, 2023. This data set outlines the total number of eligible electors in Toronto, by ward, subdivision, and the entire city. 
@@ -64,11 +64,13 @@ head (cleaned_voter_statistics, 5) |>
   )
 ```
 
-I further cleaned the cleaned voter statistics data set to count the number of subdivision per ward and organize the number of subdivisions in descending order from the highest number of subdivisions to the lowest number of subdivisions.
+Moreover, I further cleaned the voter statistics data set to count the total number of subdivisions per ward and display the results next to the ward number (see @tbl-summarized_voter_statistics).
 
 ```{r}
 #| message: false
 #| echo: false
+#| #| label: tbl-summarized_voter_statistics
+#| tbl-cap: Sample of Summarized Voter Statistics Data
 
 head(summarized_voter_statistics, 5) |>
   kable(
@@ -78,6 +80,7 @@ head(summarized_voter_statistics, 5) |>
 ```
 
 ## Results
+During the 2022 municipal election, there were 1,535 subdivisions across Toronto's 25 wards. Ward 10 had the highest number of subdivisions at 94, while Ward 23 had the lowest number at 38. Ward 13 had the second highest number of subdivisions at 90, with Ward 3 coming in third highest with 83 subdivisions. Ward 7 had the second lowest number of subdivisions at 47, following by Ward 25 with 48. The range of subdivisions within Wards varied more than anticipated, given that ward boundaries and their corresponding population are relatively equal.
 
 ```{r}
 #| message: false
