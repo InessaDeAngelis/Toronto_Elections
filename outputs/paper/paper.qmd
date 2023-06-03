@@ -107,12 +107,13 @@ summarized_voter_statistics |>
 ```{r}
 #| message: false
 #| echo: false
+#| #| label: fig-voter_statistics
+#| tbl-cap: Number of Subdivisions per Ward
 
 # summarize ward data by number of subdivisions
-
-head (summarized_voter_statistics, 60) |>
+summarized_voter_statistics |>
    kable(
-    col.names = c("Ward", "Sub"),
+    col.names = c("Ward", "Number of Subdivisions"),
   booktabs = TRUE
   )
   
