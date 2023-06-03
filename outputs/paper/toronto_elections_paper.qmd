@@ -87,7 +87,7 @@ head(summarized_voter_statistics, 5) |>
 ```
 
 ### Turnout by Ward
-Moreover, using the cleaned voter statistics data set, I added the voter turnout by ward percentage from the bottom of each ward section to a table I created with each ward number. To view a sample of this data set, please see @tbl-summarized_voter_turnout. 
+Moreover, using the cleaned voter statistics data set, I added the voter turnout by ward percentage calculated by the Toronto Elections from the bottom of each ward section to a table I created with each ward number. To view a sample of this data set, please see @tbl-summarized_voter_turnout. 
 
 
 ```{r}
@@ -188,8 +188,7 @@ finalized_voter_statistics |>
     x = "Turnout (%)",
     y = "Subdivisions",
     label = "Ward"
-  ) +
-  theme_minimal()
+  ) 
 ```
 
 ## Discussion
@@ -199,11 +198,11 @@ Futhermore, Ward 7 (Humber River-Black Creek) had a 22% voter turnout and 47 sub
 
 The Wards within Scarborough (Wards 20-25) consistently had some of the lowest voter turnouts and fewest number of subdivisions across all 25 wards. Ward 23 (Scarborough North) witnessed the third lowest voter turnout across the entire city at 25% and the fewest number of subdivisions at 38. Ward 20 (Scarborough Southwest) had the highest turnout of all Scarborough wards at 32% and had 61 subdivisions. Scarborough's recognized challenges with accessible public transit, paired with fewer subdivisions and polling locations potentially contribute to the lower voter turnout [@transitdesert]. 
 
-Within the data set used for analysis, there are several potential measurement errors. Firstly, the raw data set listed the total number of subdivisions per ward as "NA", despite other aspects of voter turnout and subdivisions being calculated by Toronto Elections. Secondly, there were gaps in the number and corresponding numbering of subdivisions which were not explained by the City Clerk or Toronto Elections. For example, Ward 1 is listed as having 60 subdivisions, plus Advanced Vote and Mail In Voting locations, but subdivisions 4, 20, 43-46, 50, and 58 are unaccounted for, totally 51 subdivisions. Thirdly, there is a lack of clarity whether the people who voted at Advanced Polls or by Mail In Ballot were removed from the total number of electors by subdivision, since these individuals did not vote at their assigned subdivision. If voters cast their ballot early and were not removed from the total number of electors at their specific subdivision, this could impact how voter turnout by subdivision is calculated. 
+Within the data set used for analysis, there are several potential measurement errors. Firstly, the raw data set listed the total number of subdivisions per ward as "NA", despite other aspects of voter turnout and subdivisions being calculated by Toronto Elections. Secondly, there were gaps in the number and corresponding numbering of subdivisions which were not explained by the City Clerk or Toronto Elections. For example, Ward 1 is listed as having 60 subdivisions, plus Advanced Vote and Mail In Voting locations, but subdivisions 4, 20, 43-46, 50, and 58 are unaccounted for, totaling 55 subdivisions. Thirdly, there is a lack of clarity whether the people who voted at Advanced Polls or by Mail In Ballot were removed from the total number of electors by subdivision, since these individuals did not vote at their assigned subdivision. If voters cast their ballot early and were not removed from the total number of electors at their specific subdivision, this could impact how voter turnout by subdivision is calculated. 
 
 There are several limitations with conducting this analysis. The creation of subdivision boundaries within wards lacks transparency and clarity, while impacting the local democratic process. The City Clerk is responsible for drawing up all ward subdivisions, however the data and information they use to make these decisions is not public and it is challenging to account for any bias introduced during this process. Toronto Elections @ElxnAccessibility clearly outlines their process for finding and establishing accessible polling locations within subdivisions but does not elaborate on the process of establishing subdivisions themselves. 
 
-Moreover, the number of subdivisions and polling location placement alone cannot dictate voter behaviour, as there are many other socio-economic factors which inform why an elector does or does not cast a ballot. The caliber of local candidates and the nature of the election, whether an incumbent is standing for re-election or the seat is open for a new councillor impacts voter turnout should be accounted for in future analysis. 
+Moreover, the number of subdivisions and polling location placement alone cannot dictate voter behaviour, as there are many other socio-economic factors which inform why an elector does or does not cast a ballot. The caliber of local candidates and the nature of the election, whether an incumbent is standing for re-election or the seat is open for a new councillor impacts voter turnout and should be accounted for in future analysis. 
 
 
 ## Conclusion
