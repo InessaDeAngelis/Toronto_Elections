@@ -79,17 +79,17 @@ rename(
 ) 
 
 # Summarize voter turnout by ward
-summarized_voter_statistics =
+summarized_voter_turnout =
 cleaned_voter_statistics |>
   select(ward, percent_voted) |>
   mutate(
     percent_voted = as.numeric(factor(percent_voted))
   ) |>
   group_by(ward) |>
-  count(
-    Turnout = mean(percent_voted, na.rm = TRUE) 
+  summarise(
+    Turnout = mean(percent_voted, na.rm = TRUE)
   )
-summarized_voter_statistics
+summarized_voter_turnout
   
 # save summarized voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
@@ -109,8 +109,8 @@ summarized_voter_statistics |>
   sum() == 0
 
 # Check that number of subdivisions per ward is between 38 and 94
-summarized_voter_statistics$n |> min() == 38
-summarized_voter_statistics$n |> max() == 94
+summarized_voter_statistics$subdivisions |> min() == 38
+summarized_voter_statistics$subdivisions |> max() == 94
 
 # Check that voter turnout is between 11% and 100% #
 cleaned_voter_statistics$percent_voted |> min() == 11
