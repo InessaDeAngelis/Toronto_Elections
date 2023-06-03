@@ -92,8 +92,8 @@ During the 2022 municipal election, there were 1,535 subdivisions across Toronto
 summarized_voter_statistics |>
  ggplot(mapping = aes(x = ward, y = n)) +
   geom_bar(stat = "identity") +
-scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
-scale_y_continuous(breaks = scales::pretty_breaks(n = 25))+
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 25)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 25))+
   labs(
     title = "Number of Subdivisions per Ward",
     x = "Ward",
