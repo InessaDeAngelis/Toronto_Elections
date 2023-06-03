@@ -120,16 +120,16 @@ write_csv(
 
 # Check that there are no more than 25 wards #
 # Referenced code from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/scripts/00-simulation.R
-summarized_voter_statistics |>
+finalized_voter_statistics |>
   group_by(ward) |>
   count() |>
   filter(n > ward) |>
   sum() == 0
 
 # Check that number of subdivisions per ward is between 38 and 94
-summarized_voter_statistics$n |> min() == 38
-summarized_voter_statistics$n |> max() == 94
+finalized_voter_statistics$n |> min() == 38
+finalized_voter_statistics$n |> max() == 94
 
 # Check that voter turnout is between 22% and 38% #
-summarized_voter_turnout$turnout |> min() == 22
-summarized_voter_turnout$turnout|> max() == 38
+finalized_voter_statistics$turnout |> min() == 22
+finalized_voter_statistics$turnout|> max() == 38
