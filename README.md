@@ -1,4 +1,4 @@
-# Do More Subdivisions in Wards Increase Turnout? An Analysis of the 2022 Toronto Municipal Election
+# Do More Subdivisions in Wards Increase Voter Turnout? An Analysis of the 2022 Toronto Municipal Election
 
 ## Overview of Paper
 This paper analyzes data from the 2022 Toronto Municipal Election to see if more subdivisions per ward increased voter turnout. 
