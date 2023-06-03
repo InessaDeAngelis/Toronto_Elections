@@ -79,16 +79,18 @@ rename(
 ) 
 
 # Summarize voter turnout by ward
-summarized_voter_turnout = 
-  cleaned_voter_statistics |>
+summarized_voter_statistics =
+cleaned_voter_statistics |>
   select(ward, percent_voted) |>
+  mutate(
+    percent_voted = as.numeric(factor(percent_voted))
+  ) |>
   group_by(ward) |>
   count(
-    Turnout = mean(percent_voted) 
+    Turnout = mean(percent_voted, na.rm = TRUE) 
   )
-summarized_voter_turnout
-
-
+summarized_voter_statistics
+  
 # save summarized voter statistics data #
 # based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
 write_csv(
