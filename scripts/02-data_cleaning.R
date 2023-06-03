@@ -88,7 +88,20 @@ cleaned_voter_statistics |>
   group_by(ward) |>
   summarise(
     Turnout = mean(percent_voted, na.rm = TRUE)
-  )
+  ) 
+summarized_voter_turnout
+
+#Find voter turnout by ward
+summarized_voter_turnout = 
+  transpose((cleaned_voter_statistics[56,]))[[1]] 
+summarized_voter_turnout
+
+summarized_voter_turnout = 
+  transpose((cleaned_voter_statistics[129,]))[[1]] 
+summarized_voter_turnout
+
+summarized_voter_turnout = 
+  transpose((cleaned_voter_statistics[216,]))[[1]] 
 summarized_voter_turnout
   
 # save summarized voter statistics data #
