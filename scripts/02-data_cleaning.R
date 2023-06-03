@@ -100,6 +100,22 @@ write_csv(
   file = "summarized_voter_turnout.csv"
 )
 
+# Merge number of subdivisions and voter turnout
+finalized_voter_statistics = 
+  merge(
+    summarized_voter_turnout,
+    summarized_voter_statistics,
+    by = "ward"
+  )
+finalized_voter_statistics
+
+# save finalized voter statistics data #
+# based on code from: https://tellingstorieswithdata.com/02-drinking_from_a_fire_hose.html
+write_csv(
+  x = finalized_voter_statistics,
+  file = "finalized_voter_statistics.csv"
+)
+
 #### Data validation ####
 
 # Check that there are no more than 25 wards #
