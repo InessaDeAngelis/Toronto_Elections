@@ -23,6 +23,7 @@ library(knitr)
 library(kableExtra)
 library(here)
 library(ggplot2)
+library(ggbeeswarm)
 
 #read in cleaned data #
 cleaned_voter_statistics <- read.csv(here::here("inputs/data/cleaned_voter_statistics.csv"))
@@ -175,15 +176,29 @@ finalized_voter_statistics |>
 #| fig-cap: Correlation between Number of Subdivisions and Voter Turnout
 
 #Voter turnout by ward
-ggplot(data = finalized_voter_statistics, mapping = aes(x = turnout, y = n)) +
-  geom_point(shape = 21, fill = '#0f993d', color = 'white', size = 3) +
-  sm_statCorr() 
+#Code referenced from: https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.pdf
+finalized_voter_statistics |>
+  ggplot(aes(x = turnout, y = n, label = ward)) + 
+  geom_point() + 
+  geom_beeswarm() +
+  geom_smooth(method=lm, se=FALSE) + 
+  geom_text(hjust=-0.5, vjust=0.5) + 
+  labs(
+    title = "Number of Subdivisions vs Voter Turnout by Ward",
+    x = "Turnout (%)",
+    y = "Subdivisions",
+    label = "Ward"
+  ) +
+  theme_minimal()
 ```
 
 ## Discussion
+Overall, the data reveals that having more subdivisions within wards does not automatically correlate to higher voter turnout, as illustrated by @fig-comparing-sub-turnout. Ward 4 (Parkdale-High Park) which had the highest voter turnout at 38% has 70 subdivisions within the ward, which falls approximately in the middle of the number of subdivisions across all 25 wards. Ward 7 (Humber River-Black Creek) had a 22% voter turnout and 47 subdivisions, emphasizing that having fewer subdivisions potentially contributed to having the lowest voter turnout across the city. Ward 10 (Spadina-Fork York), which had the second lowest voter turnout at 24%, accounts for the highest number of subdivisions within a ward at 94. Previous research reveals that younger, more transient communities reside in neighbourhoods in the Spadina-Fork York riding and are less likely to engage with municipal politics, potentially contributing to the low voter turnout despite the high number of subdivisions [@Turnout22].
+
+Furthermore, Ward 19 (Beaches-East York) and Ward 14 (Toronto Danforth) which both saw the second highest voter turnout at 36% had 57 and 52 subdivisions respectively, which is on the lower end of number of subdivisions. 
 
 
 ## Conclusion
-This paper investigates the number of subdivisions within Toronto’s 25 wards in relation to voter turnout to see if the wards with more subdivisions had higher turnout during the 2022 municipal election. My results reveal that wards with more subdivisions did not correlate to higher voter turnout. Factors such as income, level of education attained, and an analysis of local races for councillor and school board trustee within a ward (whether there was an incumbent or not) would aid in understanding voter behaviour in municipal elections. Data from the upcoming Toronto Mayoral by-election on June 26, 2023 may reveal further insights into the placement of polling locations in relation to voter turnout. Cities and municipalities across Ontario are facing declining voter turnout and the factors must be identified and addressed, whether it be more strategically choosing subdivisions and polling locations in wards, introducing online voting mechanisms, or implementing democratic reform [@reducingcost]. Strong local representation is crucial for the future of democracy in Toronto and subdivisions play an important role in ensuring voters have their voices heard. 
+This paper investigates the number of subdivisions within Toronto’s 25 wards in relation to voter turnout to see if the wards with more subdivisions had higher turnout during the 2022 municipal election. My results reveal that wards with more subdivisions did not correlate to higher voter turnout. Factors such as income, level of education attained, and an analysis of local races for councillor and school board trustee within a ward (whether there was an incumbent or not) should be analyzed in further studies of voter behaviour during municipal elections. Data from the upcoming Toronto Mayoral by-election on June 26, 2023 may reveal further insights into the placement of polling locations in relation to voter turnout. Cities and municipalities across Ontario are facing declining voter turnout and the factors must be identified and addressed, whether it be more strategically choosing subdivisions and polling locations in wards, introducing online voting mechanisms, or implementing democratic reform [@reducingcost]. Strong local representation is crucial for the future of democracy in Toronto and subdivisions play an important role in ensuring voters have their voices heard. 
 
 ## References
