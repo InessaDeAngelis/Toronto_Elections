@@ -70,7 +70,7 @@ I further cleaned the cleaned voter statistics data set to count the number of s
 #| message: false
 #| echo: false
 
-summarized_voter_statistics |>
+head(summarized_voter_statistics, 5) |>
   kable(
     col.names = c("Ward", "Number of Subdivisions"), 
     booktabs = TRUE
@@ -82,17 +82,21 @@ summarized_voter_statistics |>
 ```{r}
 #| message: false
 #| echo: false
+#| label: fig-voter_statistics
+#| tbl-cap: Number of Subdivisions per Ward
 
+#Code refernced from: https://stackoverflow.com/questions/11335836/increase-number-of-axis-ticks
 summarized_voter_statistics |>
-  ggplot(mapping = aes(x = ward, y = n)) +
+ ggplot(mapping = aes(x = ward, y = n)) +
   geom_bar(stat = "identity") +
+scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
+scale_y_continuous(breaks = scales::pretty_breaks(n = 25))+
   labs(
     title = "Number of Subdivisions per Ward",
     x = "Ward",
     y = "Number of Subdivisions",
   ) +
-  theme_classic() +
-  scale_fill_brewer(palette = "Set1")
+  theme_classic() 
   
 
 ```
@@ -108,12 +112,6 @@ head (summarized_voter_statistics, 60) |>
    kable(
     col.names = c("Ward", "Sub"),
   booktabs = TRUE
-  )
-
-cleaned_voter_statistics |>
-  slice(2:52) |>
-  count(
-    total = max(sub, na.rm = TRUE)
   )
   
 ```
