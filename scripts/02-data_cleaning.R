@@ -93,7 +93,7 @@ summarized_voter_turnout
 
 #Find voter turnout by ward
 summarized_voter_turnout = 
-  transpose((cleaned_voter_statistics[56,]))[[1]] 
+  transpose((cleaned_voter_statistics[56,]))[[1]]
 summarized_voter_turnout
 
 summarized_voter_turnout = 
