@@ -1,5 +1,5 @@
 ---
-title: "Do More Subdivisions in Wards Increase Turnout? An Analysis of the 2022 Toronto Municipal Election"
+title: "Do More Subdivisions in Wards Increase Voter Turnout? An Analysis of the 2022 Toronto Municipal Election"
 author: "Inessa De Angelis"
 thanks: "Code and data from this analysis are available at: https://github.com/InessaDeAngelis/Toronto_Elections" 
 date: "today"
@@ -31,24 +31,30 @@ show_col_types = FALSE
 #read in cleaned data #
 summarized_voter_statistics <- read.csv(here::here("inputs/data/summarized_voter_statistics.csv"))
 show_col_types = FALSE
+
+#read in cleaned data #
+summarized_voter_turnout <- read.csv(here::here("inputs/data/summarized_voter_turnout.csv"))
+show_col_types = FALSE
+
+#read in cleaned data #
+finalized_voter_statistics <- read.csv(here::here("inputs/data/finalized_voter_statistics.csv"))
+show_col_types = FALSE
 ```
 
 ## Introduction
-As mandated by the Government of Ontario, residents of the City of Toronto went to the polls on October 24, 2022 to elect a mayor, councillors, and school board trustees. Then-sitting Mayor, John Tory sought re-election, along with a number of incumbent city councillors. Coming out of the height of the Covid-19 pandemic, the 2022 election largely upheld the status quo and did not feature ambitious policy platforms. Voter turnout across the city was 29.7% - the lowest in the city’s history since amalgamation in 1997, with turnout ranging on a ward-by-ward basis from 22% to 38% [@Turnout22; @DismalTurnout]. 
+As mandated by the Government of Ontario, residents of the City of Toronto went to the polls on October 24, 2022 to elect a mayor, councillors, and school board trustees. Then-sitting Mayor, John Tory, sought re-election, along with a number of incumbent city councillors. Coming out of the height of the Covid-19 pandemic, the 2022 election largely upheld the status quo and did not feature ambitious policy platforms. Voter turnout across the city fell to 30% - the lowest in the city’s history since amalgamation in 1997, with turnout ranging on a ward-by-ward basis from 22% to 38% [@Turnout22; @DismalTurnout]. 
 
-Individual turnout by ward largely depended on local candidates and the accessibility of subdivisions to cast a ballot. The City of Toronto @ElectionDictionary defines a ward as “a geographical area represented by a member of Council.” Following Premier Doug Ford’s decision in the summer of 2018 to cut down the number of wards in the city to match federal and provincial riding boundaries, there are currently 25 wards in the City of Toronto [@BigCityElxns]. Subdivisions are defined by the City of Toronto [@VoterStatistics] as “.... geographical area[s within a ward] designated by the City Clerk.” Previous studies concentrating on large cities in the United States, including Atlanta revealed that having polling locations in close proximity to a voter’s home bolsters turnout and even minor changes in placement of a polling location can have significant impact on a voter’s decision to cast a ballot [@Locationx3]. There has been little research into the impact of polling location placement in relation to election turnout, especially in Canadian cities like Toronto and this paper will contribute to the investigation of this phenomenon. 
+Individual turnout by ward depended on local candidates and the accessibility of subdivisions to cast a ballot. The City of Toronto @ElectionDictionary defines a ward as “a geographical area represented by a member of Council.” Following Premier Doug Ford’s decision in the summer of 2018 to cut down the number of wards in the city to match federal and provincial riding boundaries, there are currently 25 wards in the City of Toronto [@BigCityElxns]. Subdivisions are defined by the City of Toronto [@VoterStatistics] as “.... geographical area[s within a ward] designated by the City Clerk.” Previous studies concentrating on large cities in the United States, including Atlanta revealed that having polling locations in close proximity to a voter’s home bolsters turnout and even minor changes in placement of a polling location can have significant impact on a voter’s decision to cast a ballot [@Locationx3]. There has been little research into the impact of polling location placement in relation to election turnout, especially in Canadian cities like Toronto and this paper will contribute to the investigation of this phenomenon. 
 
 To examine the impact of subdivision placement on voter turnout, this paper is organized into the following sections: Data, Results, Discussion, and Conclusion.  In the Data section, I discuss the nature of the spreadsheet obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto] and the steps I took to clean and analyze the data. The Results section highlights trends found during the analysis process, while the Discussion section further evaluates the trends and presents insight. Lastly, the Conclusion section summarizes the main findings from this paper. 
 
 ## Data
-The data utilized throughout this paper was obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto]. The data set used is entitled “Elections - Voter Statistics” [@VoterStatistics]. Data was collected and analyzed using the statistical programming software R (@r), with additional support from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `janitor` [@rJanitor], `KableExtra` [@rKableExtra], `Knitr` [@rknitr], and `here` [@rHere]. A further discussion of the data collection, cleaning, and analysis process can be found later on in this paper. 
+The data utilized throughout this paper was obtained through the City of Toronto’s OpenDataToronto Library [@rOpenDataToronto]. The data set used is entitled 'Elections - Voter Statistics' [@VoterStatistics]. Data was collected and analyzed using the statistical programming software R (@r), with additional support from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `janitor` [@rJanitor], `KableExtra` [@rKableExtra], `Knitr` [@rknitr], and `here` [@rHere]. A further discussion of the data collection, cleaning, and analysis process can be found later on in this paper. 
 
 ### Election Voter Statistics
-This dataset, published by the City Clerk's Office [@VoterStatistics] comprises the number of eligible voters and corrections/additions to the Voter’s List for the 2022 municipal election. The dataset is broken down by ward and voting subdivision. This data set was last refreshed on February 7, 2023 and captured for this paper on May 21, 2023. The total number of eligible electors in Toronto, by ward, subdivision, and the entire city are outlined in this data set. 
+This dataset, published by the City Clerk's Office [@VoterStatistics] outlines voter statistics on a ward-by-ward and entire city basis for the 2022 municipal election. For each subdivision within a ward, the data set shows the polling location name and address, number of additions and corrections to the voter's list, number of eligible electors and number who voted, and rejected and declined ballots.This data set was last refreshed on February 7, 2023 and captured for this paper on May 21, 2023. 
 
-For the purpose of this paper, I included the Advance Vote and Mail In Voting subdivisions when counting the total number of subdivisions per ward. Firstly, there are only two Advance Vote locations distributed across an entire ward, meaning residents have to be motivated to travel farther away from their home to cast their ballot. Secondly, Mail In Voting requires applying online or by phone through Toronto Elections and then returning the completed Mail In Voting package by dropping it in a Canada Post mailbox or hand delivering it to one of the Toronto Elections drop boxes at select locations [@ElxnAccessibility]. Voters need to be more organized and motivated to vote in advance of election day.  
-
-Upon analysis, it was discovered that this data set included columns and data beyond the scope of this paper. I conducted basic cleaning of the data set to simplify column names and eliminate additional information (see @tbl-cleaned_voter_statistics).
+Upon analysis, columns such as rejected and declined ballots were deemed beyond the scope of this paper. I conducted the first step of basic data cleaning to eliminate additional columns and simplify the names of retained columns (see @tbl-cleaned_voter_statistics).
 
 ```{r}
 #| message: false
@@ -62,8 +68,10 @@ head (cleaned_voter_statistics, 5) |>
   booktabs = TRUE
   )
 ```
+### Number of Subdivisions 
+For the purpose of this paper, I included the Advance Vote and Mail In Voting subdivisions when counting the total number of subdivisions per ward. Firstly, there are only two Advance Vote locations distributed across an entire ward, meaning residents have to be motivated to travel farther away from their home to cast their ballot. Secondly, Mail In Voting requires applying online or by phone through Toronto Elections and then returning the completed Mail In Voting package by dropping it in a Canada Post mailbox or hand delivering it to one of the select Toronto Elections drop boxes [@ElxnAccessibility]. Voters need to be organized and motivated to vote in advance of election day.
 
-Moreover, I further cleaned the voter statistics data set to count the total number of subdivisions per ward and display the results next to the ward number (see @tbl-summarized_voter_statistics).
+I further cleaned the voter statistics data set to count the total number of subdivisions per ward and display the results next to the ward number (see @tbl-summarized_voter_statistics).
 
 ```{r}
 #| message: false
@@ -78,6 +86,11 @@ head(summarized_voter_statistics, 5) |>
   )
 ```
 
+### Turnout by Ward
+Moreover, using the cleaned voter statistics data set, I created a table with
+
+### Merged Number of Subdivisions and Turnout 
+
 ## Results
 During the 2022 municipal election, there were 1,535 subdivisions across Toronto's 25 wards. Ward 10 (Spadina-Fort York) had the highest number of subdivisions at 94, while Ward 23 (Scarborough North) had the lowest number at 38. Ward 13 (Toronto Centre) had the second highest number of subdivisions at 90, with Ward 3 (Etobicoke-Lakeshore) coming in third highest with 83 subdivisions. Ward 7 (Humber River-Black Creek) had the second lowest number of subdivisions at 47, following by Ward 25 (Scarborough-Rouge Park) with 48. The range of subdivisions within Wards varied more than anticipated, given that ward boundaries and their corresponding population are relatively equal.
 
@@ -88,7 +101,7 @@ During the 2022 municipal election, there were 1,535 subdivisions across Toronto
 #| tbl-cap: Number of Subdivisions per Ward
 
 #Code refernced from: https://stackoverflow.com/questions/11335836/increase-number-of-axis-ticks
-summarized_voter_statistics |>
+finalized_voter_statistics |>
  ggplot(mapping = aes(x = ward, y = n)) +
   geom_bar(stat = "identity") +
   scale_x_continuous(breaks = scales::pretty_breaks(n = 25)) +
@@ -107,15 +120,22 @@ summarized_voter_statistics |>
 ```{r}
 #| message: false
 #| echo: false
-#| #| label: fig-voter_statistics
-#| tbl-cap: Number of Subdivisions per Ward
+#| #| label: fig-turnout_by_ward
+#| tbl-cap: Voter Turnout by Ward
 
-# summarize ward data by number of subdivisions
-summarized_voter_statistics |>
-   kable(
-    col.names = c("Ward", "Number of Subdivisions"),
-  booktabs = TRUE
-  )
+#Voter turnout by ward
+#Code refernced from: https://stackoverflow.com/questions/11335836/increase-number-of-axis-ticks
+finalized_voter_statistics |>
+ ggplot(mapping = aes(x = ward, y = turnout)) +
+  geom_bar(stat = "identity") +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 25)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 25))+
+  labs(
+    title = "Voter Turnout by Ward",
+    x = "Ward",
+    y = "Turnout (%)",
+  ) +
+  theme_classic() 
   
 ```
 ## Discussion
